@@ -25,7 +25,7 @@ const OauthInput = (props) => {
         backgroundColor={backgroundColor}
         borderRadious={borderRadious}
         color={color}
-        value={value || null}
+        value={value || undefined}
       />
     </>
   );
