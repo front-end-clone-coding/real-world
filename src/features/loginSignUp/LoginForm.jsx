@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import LoginInput from "../../components/LoginInput";
 import OauthInput from "../../components/OauthInput";
 const LoginForm = () => {
   return (
@@ -124,7 +123,7 @@ const LoginSloganSection = styled.div`
   strong {
     color: #626262;
   }
-  a{
-    
+  a {
+
   }
 `;

@@ -1,9 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-const OauthInput = ({ placeholder }) => {
+const OauthInput = (props) => {
+  const {
+    type,
+    placeholder,
+    borderColor,
+    boxShadow,
+    className,
+    onClick,
+    backgroundColor,
+    borderRadious,
+    color,
+    value,
+  } = props;
   return (
     <>
-      <Input type="text" placeholder={placeholder} />
+      <Input
+        type={type}
+        placeholder={placeholder}
+        borderColor={borderColor}
+        boxShadow={boxShadow}
+        className={className || null}
+        onClick={onClick}
+        backgroundColor={backgroundColor}
+        borderRadious={borderRadious}
+        color={color}
+        value={value || undefined}
+      />
     </>
   );
 };
@@ -19,11 +42,16 @@ const Input = styled.input`
   line-height: 20px;
   width: 100%;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: ${(props) => props.backgroundColor || "none"};
+  border-radius: ${(props) => props.borderRadious || "none"};
+  color: ${(props) => props.color || "none"};
   :focus {
     color: #495057;
     background-color: #fff;
-    border-color: #80bdff;
+    border-color: ${(props) => props.borderColor || "#80bdff"};
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: ${(props) =>
+      props.boxShadow || "0 0 0 0.2rem rgba(0, 123, 255, 0.25)"};
+    background-color: ${(props) => props.backgroundColor || "none"};
   }
 `;

@@ -4,14 +4,14 @@ const GlobalStyle = createGlobalStyle`
   @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
   * {
-    margin: 0;
-	  padding: 0;
-	  border: 0;
-	  font-size: 100%;
-	  vertical-align: baseline;
-    color: #000000;
-    box-sizing: border-box;
-    
+  box-sizing: border-box;
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+    color: #000000
+
   }
 
   body {
