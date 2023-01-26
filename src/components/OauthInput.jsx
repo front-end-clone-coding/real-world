@@ -1,6 +1,6 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
-const OauthInput = (props) => {
+const OauthInput = forwardRef((props, ref) => {
   const {
     type,
     placeholder,
@@ -11,8 +11,12 @@ const OauthInput = (props) => {
     backgroundColor,
     borderRadious,
     color,
-    value,
+    onChange,
+    name,
   } = props;
+
+  let { userValue } = props;
+
   return (
     <>
       <Input
@@ -25,11 +29,14 @@ const OauthInput = (props) => {
         backgroundColor={backgroundColor}
         borderRadious={borderRadious}
         color={color}
-        value={value || undefined}
+        onChange={onChange}
+        name={name}
+        value={userValue || undefined}
+        ref={ref}
       />
     </>
   );
-};
+});
 
 export default OauthInput;
 const Input = styled.input`
