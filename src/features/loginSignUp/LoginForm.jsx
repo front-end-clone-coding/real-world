@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import OauthInput from "../../components/OauthInput";
+import Button from "../../components/Button";
 const LoginForm = () => {
   return (
     <>
@@ -47,7 +48,7 @@ const LoginForm = () => {
                 />
               </div>
             </form>
-            <a>이메일로 회원가입</a>
+            <Button>이메일로 회원가입</Button>
           </LoginSection>
         </Container>
       </LoginScreen>
