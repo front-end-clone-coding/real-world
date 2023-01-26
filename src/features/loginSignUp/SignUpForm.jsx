@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../../img/logo.svg";
+import OauthInput from "../../components/OauthInput";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -15,24 +16,34 @@ export const SignUpForm = () => {
           </STlogo>
           <LonginForm>
             <div>
-              <input type="text" placeholder="닉네임을 입력해주세요"></input>
+              <OauthInput type="text" placeholder="닉네임을 입력해주세요" />
             </div>
             <div>
-              <input type="email" placeholder="이메일을 입력해주세요"></input>
+              <OauthInput type="email" placeholder="이메일을 입력해주세요" />
             </div>
             <div>
-              <input
+              <OauthInput
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
-              ></input>
+              />
             </div>
             <div>
-              <input
+              <OauthInput
                 type="password"
                 placeholder="비밀번호를 다시 입력해주세요"
-              ></input>
+              />
             </div>
-            <button>이메일로 회원가입</button>
+            <OauthInput
+              type="submit"
+              boxShadow="none"
+              borderColor="none"
+              backgroundColor="#c869ff"
+              borderRadious="22px"
+              color="white"
+              value="이메일로 회원가입"
+            >
+              이메일로 회원가입
+            </OauthInput>
           </LonginForm>
         </LoginSection>
       </InputContainer>

@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import OauthInput from "../../components/OauthInput";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
+  const nav = useNavigate();
   return (
     <>
       <LoginScreen>
@@ -48,7 +50,7 @@ const LoginForm = () => {
                 />
               </div>
             </form>
-            <Button>이메일로 회원가입</Button>
+            <Button onClick={() => nav(`/signUp`)}>이메일로 회원가입</Button>
           </LoginSection>
         </Container>
       </LoginScreen>
