@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 	font-size: 100%;
 	vertical-align: baseline;
     color: #000000
+
   }
 
   body {
