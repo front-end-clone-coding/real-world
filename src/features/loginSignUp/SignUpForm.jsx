@@ -101,13 +101,6 @@ const LonginForm = styled.form`
     width: 100%;
 
     background-color: #f5f5f5;
-    border-radius: 5px;
     border: 1px solid #d5d5d5;
-  }
-  button {
-    width: 100%;
-    height: 40px;
-    margin: 0px;
-    border-radius: 30px;
   }
 `;

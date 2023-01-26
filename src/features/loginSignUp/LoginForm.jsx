@@ -73,7 +73,6 @@ const LoginScreen = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: antiquewhite;
   display: flex;
   max-width: 1024px;
   width: 100%;
@@ -127,6 +126,5 @@ const LoginSloganSection = styled.div`
     color: #626262;
   }
   a {
-
   }
 `;
