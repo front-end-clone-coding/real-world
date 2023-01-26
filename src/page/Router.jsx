@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GlobalStyle from "../../styles/GlobalStyle";
+import GlobalStyle from "../styles/GlobalStyle";
 import Detail from "./Detail";
 import Login from "./Login";
 import Main from "./Main";
@@ -9,10 +9,12 @@ const Router = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Route path="/" element={<Main />} />
-      <Route path="Login" element={<Login />} />
-      <Route path="signUp" element={<SignUp />} />
-      <Route path="detail/:id" element={<Detail />} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="detail/:id" element={<Detail />} />
+      </Routes>
     </BrowserRouter>
   );
 };
