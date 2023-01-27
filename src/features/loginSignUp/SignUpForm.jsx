@@ -11,7 +11,7 @@ export const SignUpForm = () => {
       <InputContainer>
         <LoginSection>
           <STlogo>
-            <img class="logo" src={logo} alt="리얼월드" />
+            <img className="logo" src={logo} alt="리얼월드" />
             <p>리얼월드 회원가입</p>
           </STlogo>
           <LonginForm>

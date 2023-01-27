@@ -1,0 +1,12 @@
+{
+  "login": [
+    {
+      "id": "aaa@naver.com",
+      "pw": "123456789"
+    },
+    {
+      "id": "abcd@naver.com",
+      "pw": "123456789"
+    }
+  ]
+}

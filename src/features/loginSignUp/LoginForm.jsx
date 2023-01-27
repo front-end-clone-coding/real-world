@@ -1,10 +1,60 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import logo from "../../img/logo.svg";
 import OauthInput from "../../components/OauthInput";
 import Button from "../../components/Button";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { __postLogin } from "../../reduex/modules/loginSlice";
 const LoginForm = () => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  //Email유효성검사
+  const regEmail =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+
+  //로그인 상태관리
+  const emailValue = useRef();
+  const passwordValue = useRef();
+
+  //hidden 여부
+  const [reg, SetReg] = useState({
+    email: true,
+    password: true,
+  });
+
+  const onSubmitLoginHandler = (event) => {
+    event.preventDefault();
+
+    const email = emailValue.current;
+    const password = passwordValue.current;
+
+    //유효성 검사
+    //email
+    if (email.value.trim() === "") {
+      SetReg({ ...reg, email: false });
+      email.focus();
+      return;
+    } else if (!regEmail.test(email.value)) {
+      SetReg({ ...reg, email: false });
+      email.focus();
+      return;
+    }
+
+    //password
+    if (password.value.trim() === "") {
+      SetReg({ ...reg, password: false });
+      password.focus();
+      return;
+    } else if (password.value.length < 8) {
+      SetReg({ ...reg, password: false });
+      password.focus();
+      return;
+    }
+    const user = { email: email.value, pw: password.value };
+    dispatch(__postLogin({ user, navigate }));
+  };
+
   return (
     <>
       <LoginScreen>
@@ -22,7 +72,7 @@ const LoginForm = () => {
           <LoginSection>
             <LoginSloganSection>
               <div>
-                <img src="https://ui.realworld.to/images/ui/logo.svg" alt="" />
+                <img className="logo" src={logo} alt="리얼월드" />
               </div>
               <p>
                 리얼월드는
@@ -31,13 +81,39 @@ const LoginForm = () => {
             </LoginSloganSection>
             <form>
               <div>
-                <OauthInput type="text" placeholder="이메일" />
+                <OauthInput
+                  type="email"
+                  placeholder="이메일"
+                  name="email"
+                  ref={emailValue}
+                  onChange={(e) => {
+                    const checkEmail = e.target.value;
+                    if (!regEmail.test(checkEmail)) {
+                      SetReg({ ...reg, email: false });
+                    } else SetReg({ ...reg, email: true });
+                  }}
+                />
               </div>
-              <span>이메일을 입력해주세요</span>
+              <ErrorMessage hidden={reg.email}>
+                이메일을 입력해주세요.
+              </ErrorMessage>
               <div>
-                <OauthInput type="password" placeholder="비밀번호" />
+                <OauthInput
+                  type="password"
+                  name="password"
+                  placeholder="비밀번호"
+                  ref={passwordValue}
+                  onChange={(e) => {
+                    const checkPW = e.target.value;
+                    if (checkPW.length < 8) {
+                      SetReg({ ...reg, password: false });
+                    } else SetReg({ ...reg, password: true });
+                  }}
+                />
               </div>
-              <span>8글자 이상</span>
+              <ErrorMessage hidden={reg.password}>
+                8글자이상 입력 해주세요.
+              </ErrorMessage>
               <div>
                 <OauthInput
                   type="submit"
@@ -46,11 +122,14 @@ const LoginForm = () => {
                   backgroundColor="#c869ff"
                   borderRadious="22px"
                   color="white"
-                  value="로그인"
+                  userValue="로그인"
+                  onClick={onSubmitLoginHandler}
                 />
               </div>
             </form>
-            <Button onClick={() => nav(`/signUp`)}>이메일로 회원가입</Button>
+            <Button onClick={() => navigate(`/signUp`)}>
+              이메일로 회원가입
+            </Button>
           </LoginSection>
         </Container>
       </LoginScreen>
@@ -127,4 +206,11 @@ const LoginSloganSection = styled.div`
   }
   a {
   }
+`;
+
+const ErrorMessage = styled.span`
+  display: ${(props) => props.hidden && "none"};
+  margin-left: 17px;
+  color: #c869ff;
+  font-size: 14px;
 `;
