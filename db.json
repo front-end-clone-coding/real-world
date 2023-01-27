@@ -9,5 +9,19 @@
       "pw": "123456789"
     }
   ],
-  "user": []
+
+  "user": [
+    {
+      "userName": "qweqwe",
+      "email": "aaa@naa.com",
+      "password": "12345678",
+      "id": 1
+    },
+    {
+      "userName": "qwqwe",
+      "email": "aaa@naa.com",
+      "password": "12341234",
+      "id": 2
+    }
+  ]
 }
