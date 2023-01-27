@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { axiosInstance } from "../share/request";
 import axios from "axios";
 
 const initialState = {
@@ -13,7 +13,7 @@ export const __signUp = createAsyncThunk(
   "signUp",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post("http://localhost:3001/user", payload);
+      const data = await axiosInstance.post(`/user`, payload);
       console.log(data);
       console.log(payload);
       return thunkAPI.fulfillWithValue(data.data);
@@ -27,8 +27,8 @@ export const __signUp = createAsyncThunk(
 );
 
 //리덕스
-export const LoginSignup = createSlice({
-  name: "loginSignUp",
+export const Signup = createSlice({
+  name: "SignUp",
   initialState,
   reducers: {
     logOut: (state, payload) => {
@@ -36,25 +36,13 @@ export const LoginSignup = createSlice({
     },
   },
   extraReducers: {
-    // //로그인
-    // [__postLogin.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [__postLogin.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    // },
-    // [__postLogin.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-
     //회원가입
     [__signUp.pending]: (state) => {
       state.isLoading = true;
     },
     [__signUp.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.userInfo.push(action.payload);
+      state.users.push(action.payload);
     },
     [__signUp.rejected]: (state, action) => {
       state.isLoading = false;
@@ -77,5 +65,4 @@ export const LoginSignup = createSlice({
   },
 });
 
-export const { logOut } = LoginSignup.actions;
-export default LoginSignup.reducer;
+export default Signup.reducer;
