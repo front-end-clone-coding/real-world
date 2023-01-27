@@ -19,8 +19,8 @@ const ButtonComponents = styled.button`
   font-size: 14px;
   line-height: 20px;
   width: 100%;
-  border-color: ${(props) => props.borderColor || "#3b5998"};
-  background-color: ${(props) => props.backgroundColor || "#3b5998"};
+  border-color: ${({ borderColor }) => borderColor || "#3b5998"};
+  background-color: ${({ backgroundColor }) => backgroundColor || "#3b5998"};
   border-radius: 22px;
   color: white;
 `;
