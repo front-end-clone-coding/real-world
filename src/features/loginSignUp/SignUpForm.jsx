@@ -4,7 +4,7 @@ import logo from "../../img/logo.svg";
 import OauthInput from "../../components/OauthInput";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __signUp } from "../../reduex/modules/LoginSignup";
+import { __signUp } from "../../reduex/modules/SignUpSlice";
 
 export const SignUpForm = () => {
   //DOM에 직접 관여하는 ref, 리렌더링이 일어나지 않음
