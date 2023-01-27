@@ -1,46 +1,82 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import logo from "../../img/logo.svg";
 import OauthInput from "../../components/OauthInput";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { __signUp } from "../../reduex/modules/LoginSignup";
 
 export const SignUpForm = () => {
+  //DOM에 직접 관여하는 ref, 리렌더링이 일어나지 않음
+  const userNameValue = useRef();
+  const emailValue = useRef();
+  const passwordValue = useRef();
+  const passwordCheckValue = useRef();
+
+  const dispatch = useDispatch();
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(userNameValue);
+
+    const userName = userNameValue.current.value;
+    const email = emailValue.current.value;
+    const password = passwordValue.current.value;
+    const passwordCheck = passwordCheckValue.current.value;
+
+    dispatch(__signUp({ userName, email, password, passwordCheck }));
+  };
+
   return (
     <LoginScreen>
       <InputContainer>
         <LoginSection>
           <STlogo>
-            <img class="logo" src={logo} alt="리얼월드" />
+            <img className="logo" src={logo} alt="리얼월드" />
             <p>리얼월드 회원가입</p>
           </STlogo>
           <LonginForm>
             <div>
-              <OauthInput type="text" placeholder="닉네임을 입력해주세요" />
-            </div>
-            <div>
-              <OauthInput type="email" placeholder="이메일을 입력해주세요" />
+              <OauthInput
+                name="userName"
+                ref={userNameValue}
+                type="text"
+                placeholder="닉네임을 입력해주세요"
+              />
             </div>
             <div>
               <OauthInput
+                name="email"
+                ref={emailValue} // value 대신 ref로
+                type="email"
+                placeholder="이메일을 입력해주세요"
+              />
+            </div>
+            <div>
+              <OauthInput
+                name="password"
+                ref={passwordValue}
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
               />
             </div>
             <div>
               <OauthInput
+                name="passwordCheck"
+                ref={passwordCheckValue}
                 type="password"
                 placeholder="비밀번호를 다시 입력해주세요"
               />
             </div>
             <OauthInput
+              onClick={onSubmitHandler}
               type="submit"
               boxShadow="none"
               borderColor="none"
               backgroundColor="#c869ff"
               borderRadious="22px"
-              color="white"
-              value="이메일로 회원가입"
+              color="black"
+              userValue="이메일로 회원가입"
             >
               이메일로 회원가입
             </OauthInput>

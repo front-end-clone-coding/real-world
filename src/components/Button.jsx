@@ -1,31 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-const Button = (props) => {
-  const {
-    type,
-    borderColor,
-    className,
-    onClick,
-    backgroundColor,
-    borderRadious,
-    color,
-    value,
-    children,
-  } = props;
+
+const Button = ({ children, ...props }) => {
   return (
     <>
-      <ButtonComponents
-        type={type}
-        borderColor={borderColor}
-        className={className || null}
-        onClick={onClick}
-        backgroundColor={backgroundColor}
-        borderRadious={borderRadious}
-        color={color}
-        value={value || undefined}
-      >
-        {children}
-      </ButtonComponents>
+      <ButtonComponents {...props}>{children}</ButtonComponents>
     </>
   );
 };
