@@ -27,8 +27,8 @@ export const __signUp = createAsyncThunk(
 );
 
 //리덕스
-export const LoginSignup = createSlice({
-  name: "loginSignUp",
+export const Signup = createSlice({
+  name: "Signup",
   initialState,
   reducers: {
     logOut: (state, payload) => {
@@ -36,18 +36,6 @@ export const LoginSignup = createSlice({
     },
   },
   extraReducers: {
-    // //로그인
-    // [__postLogin.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [__postLogin.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    // },
-    // [__postLogin.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-
     //회원가입
     [__signUp.pending]: (state) => {
       state.isLoading = true;
@@ -77,5 +65,5 @@ export const LoginSignup = createSlice({
   },
 });
 
-export const { logOut } = LoginSignup.actions;
-export default LoginSignup.reducer;
+export const { logOut } = Signup.actions;
+export default Signup.reducer;
