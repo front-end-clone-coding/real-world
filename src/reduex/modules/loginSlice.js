@@ -1,4 +1,3 @@
-import React from "react";
 import { axiosInstance } from "../share/request";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
@@ -12,7 +11,7 @@ export const __postLogin = createAsyncThunk(
   "login",
   async ({ user, navigate }, thunkAPI) => {
     try {
-      const data = await axiosInstance.post(`/login`, user);
+      const data = await axiosInstance.post(`user/login`, user);
 
       navigate("/");
       return thunkAPI.fulfillWithValue(data.data);

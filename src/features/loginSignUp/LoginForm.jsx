@@ -24,9 +24,25 @@ const LoginForm = () => {
     password: true,
   });
 
+  //유효성 이벤트 핸들러
+  const onChangeRegHandler = (event) => {
+    const { name, value } = event.target;
+    console.log(emailValue.current.value);
+    if (name === "email") {
+      if (!regEmail.test(value)) {
+        SetReg({ ...reg, email: false });
+      } else SetReg({ ...reg, email: true });
+    } else {
+      if (value.length < 8) {
+        SetReg({ ...reg, password: false });
+      } else SetReg({ ...reg, password: true });
+    }
+  };
+
+  //회원가입버튼을 눌렀을시 이벤트핸들러
   const onSubmitLoginHandler = (event) => {
     event.preventDefault();
-
+    console.log(emailValue);
     const email = emailValue.current;
     const password = passwordValue.current;
 
@@ -65,10 +81,17 @@ const LoginForm = () => {
               계정 하나로 <strong>리얼월드 앱</strong>과<br />
               <strong>리얼월드 스튜디오</strong>에 로그인하세요!
             </p>
-            <img
-              src="https://ui.realworld.to/images/ui/login_mockup_image.png "
-              alt="img"
-            />
+            <a
+              href="#!"
+              onClick={() => {
+                navigate(`/`);
+              }}
+            >
+              <img
+                src="https://ui.realworld.to/images/ui/login_mockup_image.png "
+                alt="img"
+              />
+            </a>
           </HeroSection>
           <LoginSection>
             <LoginSloganSection>
@@ -87,12 +110,7 @@ const LoginForm = () => {
                   placeholder="이메일"
                   name="email"
                   ref={emailValue}
-                  onChange={(e) => {
-                    const checkEmail = e.target.value;
-                    if (!regEmail.test(checkEmail)) {
-                      SetReg({ ...reg, email: false });
-                    } else SetReg({ ...reg, email: true });
-                  }}
+                  onChange={onChangeRegHandler}
                 />
               </div>
               <ErrorMessage hidden={reg.email}>
@@ -104,12 +122,7 @@ const LoginForm = () => {
                   name="password"
                   placeholder="비밀번호"
                   ref={passwordValue}
-                  onChange={(e) => {
-                    const checkPW = e.target.value;
-                    if (checkPW.length < 8) {
-                      SetReg({ ...reg, password: false });
-                    } else SetReg({ ...reg, password: true });
-                  }}
+                  onChange={onChangeRegHandler}
                 />
               </div>
               <ErrorMessage hidden={reg.password}>

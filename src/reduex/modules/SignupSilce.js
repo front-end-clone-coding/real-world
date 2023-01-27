@@ -27,8 +27,9 @@ export const __signUp = createAsyncThunk(
 );
 
 //리덕스
-export const Signup = createSlice({
-  name: "SignUp",
+export const SignUpSlice = createSlice({
+  name: "SignUpSlice",
+
   initialState,
   reducers: {
     logOut: (state, payload) => {
@@ -65,4 +66,5 @@ export const Signup = createSlice({
   },
 });
 
-export default Signup.reducer;
+export const { logOut } = SignUpSlice.actions;
+export default SignUpSlice.reducer;
