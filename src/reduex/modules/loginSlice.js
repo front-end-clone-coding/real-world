@@ -38,6 +38,7 @@ export const loginSlice = createSlice({
     },
     [__postLogin.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.loginCheck = true;
     },
     [__postLogin.rejected]: (state, action) => {
       state.isLoading = false;
