@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CategoryCards from "../../components/CategoryCards";
 import { getCategoryGameInfo } from "../../reduex/modules/mainGameInfoSlice";
 const GameList = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryGameInfo());
@@ -14,6 +15,7 @@ const GameList = () => {
       <CategoryCards />
     </>
   );
+
 };
 
 export default GameList;

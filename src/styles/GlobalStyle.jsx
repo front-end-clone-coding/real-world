@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
   * {
   box-sizing: border-box;
