@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
 const Tab = ({ Categorylist }) => {
-  const [currentTab, SetcurrentTab] = useState(<FreeGameList />);
+  const [currentTab, SetcurrentTab] = useState(<BestGameList />);
   const [currentTabIndex, SetcurrentTabIndex] = useState(0);
   const onClickTabHandler = (index, content) => {
     SetcurrentTabIndex(index);
@@ -33,7 +33,6 @@ const Tab = ({ Categorylist }) => {
             );
           })}
         </TabMenuUl>
-        {/* 바꿔치기 */}
         {currentTab}
       </TabContainer>
     </>
@@ -42,7 +41,6 @@ const Tab = ({ Categorylist }) => {
 
 export default Tab;
 const TabContainer = styled.div`
-  //background-color: rgb(255, 62, 62);
   height: auto;
   border-bottom: 1px solid rgb(237, 237, 237);
 `;
@@ -50,7 +48,6 @@ const TabMenuUl = styled.ul`
   width: 100%;
   max-width: 1140px;
   padding: 0 1.5rem;
-  background-color: antiquewhite;
   display: flex;
   margin-left: auto;
   margin-right: auto;

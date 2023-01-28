@@ -42,7 +42,7 @@ const Free = () => {
         <SectionList>
           {gameInfo.map((content) => {
             return (
-              <div key={content.id}>
+              <SectionGap key={content.id}>
                 <GameImgBox>
                   <img src={content.gameImg} alt={content.gameTitle} />
                 </GameImgBox>
@@ -51,8 +51,11 @@ const Free = () => {
                   <div>
                     <p>{content.gamePrice}</p>
                   </div>
+                  <div>
+                    <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
+                  </div>
                 </Information>
-              </div>
+              </SectionGap>
             );
           })}
         </SectionList>
@@ -96,29 +99,33 @@ const SectionWrap = styled.div`
 `;
 
 const SectionList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   padding-bottom: 24px;
 `;
 
-const SectionGap = styled.div``;
+const SectionGap = styled.div`
+  display: flex;
+  gap: 16px;
+`;
 
 const GameImgBox = styled.div`
   img {
     object-fit: cover;
     border-radius: 8px;
-    width: 250px;
-    height: 168px;
+    width: 142px;
+    height: 200px;
   }
 `;
 
 const Information = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   h2 {
     font-size: 15px;
     margin-bottom: 0px;
-    font-weight: 500;
-    line-height: 23px;
-    max-height: 46px;
+    font-weight: 700;
+    line-height: 24px;
+    max-height: 48px;
   }
   p {
     font-size: 12px;

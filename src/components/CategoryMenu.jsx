@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-const CategoryMenu = () => {
+const CategoryMenu = ({ children }) => {
   return (
     <>
-      <H2>🎀리얼월드 인기작🎀</H2>
+      <H2>{children}</H2>
     </>
   );
 };

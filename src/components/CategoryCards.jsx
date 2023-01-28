@@ -6,7 +6,7 @@ const CategoryCards = () => {
   return (
     <>
       <SectionWrap>
-        <CategoryMenu />
+        <CategoryMenu>🎀리얼월드 인기작🎀</CategoryMenu>
         <SectionList>
           {gameInfo.map((content) => {
             return (
