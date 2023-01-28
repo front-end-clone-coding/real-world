@@ -1,24 +1,69 @@
+import Slider from "../../components/Slider";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import CategoryCards from "../../components/CategoryCards";
 import { getCategoryGameInfo } from "../../reduex/modules/mainGameInfoSlice";
+
 const GameList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryGameInfo());
   }, []);
+  
   return (
-    <>
-      <Dived />
+    <div>
+      <div>
+        <Title1>
+          <div>리얼월드 추천 게임</div>
+        </Title1>
+        <SliderContainer>
+          <Slider />
+        </SliderContainer>
+      </div>
+      <div>
+        <div>추천 / 무료</div>
+      </div>
+      <div>
+        <div>
+          <div>카테고리</div>
+        </div>
+        <div>
+          <div>야외형 / 모바일 / 키트형 / 교육용</div>
+        </div>
+      </div>
+      <div>
+        <div>
+           <Dived />
       <CategoryCards />
-    </>
+        </div>
+        <div>
+          <Dived />
+      <CategoryCards />
+        </div>
+      </div>
+    </div>
   );
-
 };
-
 export default GameList;
+
+const Title1 = styled.div`
+  border: 2px solid black;
+
+  padding: 30px;
+  margin-top: 30px;
+
+  font-size: large;
+  font-weight: 800;
+`;
+
+const SliderContainer = styled.div`
+  border: 2px solid black;
+  padding: 20px;
+  height: 100%;
+  `;
+  
 const Dived = styled.div`
   margin-bottom: 48px;
   margin-top: 32px;

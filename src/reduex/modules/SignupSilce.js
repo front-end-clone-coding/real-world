@@ -9,6 +9,7 @@ const initialState = {
   loginCheck: false,
 };
 
+//회원가입
 export const __signUp = createAsyncThunk(
   "signUp",
   async (payload, thunkAPI) => {
