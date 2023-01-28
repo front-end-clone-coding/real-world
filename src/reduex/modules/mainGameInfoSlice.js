@@ -11,7 +11,7 @@ export const getCategoryGameInfo = createAsyncThunk(
   "categoryGameInfo",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.get("/gameInfo");
+      const { data } = await axiosInstance.get("/freegameInfo");
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;

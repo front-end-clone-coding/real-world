@@ -1,15 +1,18 @@
 import Slider from "../../components/Slider";
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import CategoryCards from "../../components/CategoryCards";
 import { getCategoryGameInfo } from "../../reduex/modules/mainGameInfoSlice";
+import Tab from "../../components/Tab";
 
 const GameList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryGameInfo());
   }, []);
+
+  //Tab
+  const Categorylist = ["추천", "무료"];
 
   return (
     <div>
@@ -21,27 +24,9 @@ const GameList = () => {
           <Slider />
         </SliderContainer>
       </div>
-      <Menubar>
-        <div>추천</div>
-        <div>무료</div>
-      </Menubar>
       <div>
-        <div>
-          <div>카테고리</div>
-        </div>
-        <div>
-          <div>야외형 / 모바일 / 키트형 / 교육용</div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <Dived />
-          <CategoryCards />
-        </div>
-        <div>
-          <Dived />
-          <CategoryCards />
-        </div>
+        <Tab Categorylist={Categorylist} />
+
       </div>
     </div>
   );

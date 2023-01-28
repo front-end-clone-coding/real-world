@@ -24,16 +24,28 @@ export default function Slider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg" />
+          <img
+            src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg"
+            alt="게임1"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://cdn.realworld.to/user-files/ZhZf13RTauX2VVqNtUgVvA/20-10-23-09-24-48_1LU_VoYeHc0.jpg" />
+          <img
+            src="https://cdn.realworld.to/user-files/ZhZf13RTauX2VVqNtUgVvA/20-10-23-09-24-48_1LU_VoYeHc0.jpg"
+            alt="게임2"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg" />
+          <img
+            src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg"
+            alt="게임3"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://cdn.realworld.to/user-files/jgWcGgj-rzR5YHLxKwsNFA/21-11-02-07-29-32_uCsuZj6AI2Q.png" />
+          <img
+            src="https://cdn.realworld.to/user-files/jgWcGgj-rzR5YHLxKwsNFA/21-11-02-07-29-32_uCsuZj6AI2Q.png"
+            alt="게임4"
+          />
         </SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>
         <SwiperSlide>Slide 6</SwiperSlide>

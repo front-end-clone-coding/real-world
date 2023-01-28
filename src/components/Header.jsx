@@ -65,7 +65,7 @@ const Container = styled.nav`
   justify-content: space-between;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  max-width: 960px;
+  max-width: 1140px;
 `;
 const LogImg = styled.img`
   width: 162px;
