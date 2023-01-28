@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-
 import "./Style.css";
 
 // import required modules
@@ -18,10 +17,10 @@ export default function Slider() {
         spaceBetween={30}
         loop={true}
         loopFillGroupWithBlank={true}
-        navigation={true}
         modules={[Autoplay]}
         autoplay={{ delay: 1000 }}
         disableOnInteraction={false}
+        pauseOnMouseEnter={true}
         className="mySwiper"
       >
         <SwiperSlide>
