@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-const Tab = () => {
+import BestGameList from "../features/main/BestGameList";
+import FreeGameList from "../features/main/FreeGameList";
+const Tab = ({ Categorylist }) => {
+  const [currentTab, SetcurrentTab] = useState(<FreeGameList />);
+  const [currentTabIndex, SetcurrentTabIndex] = useState(0);
+  const onClickTabHandler = (index, content) => {
+    SetcurrentTabIndex(index);
+    if (content === "무료") {
+      SetcurrentTab(<FreeGameList />);
+    } else if (content === "추천") {
+      SetcurrentTab(<BestGameList />);
+    }
+  };
+
+  // console.log(currentTab);
   return (
     <>
       <TabContainer>
         <TabMenuUl>
-          <li>추천</li>
-          <li>무료</li>
+          {Categorylist.map((content, index) => {
+            return (
+              <li
+                key={index}
+                className={index === currentTabIndex ? "focusMenu" : "subMenu"}
+                onClick={() => {
+                  onClickTabHandler(index, content);
+                }}
+              >
+                {content}
+              </li>
+            );
+          })}
         </TabMenuUl>
+        {/* 바꿔치기 */}
+        {currentTab}
       </TabContainer>
     </>
   );
@@ -15,7 +42,6 @@ const Tab = () => {
 
 export default Tab;
 const TabContainer = styled.div`
-  margin-top: 100px;
   //background-color: rgb(255, 62, 62);
   height: auto;
   border-bottom: 1px solid rgb(237, 237, 237);
@@ -31,10 +57,30 @@ const TabMenuUl = styled.ul`
 
   li {
     font-size: 18px;
-    border-bottom: ${(props) => props.focus && "2px solid rgb(0, 0, 0)"};
-    color: ${(props) => props.focus || "rgb(98, 98, 98)"};
-    padding: 8px 16px;
+    padding: 10px 16px;
     font-weight: bold;
     cursor: pointer;
+  }
+  .subMenu {
+    color: rgb(98, 98, 98);
+  }
+  .focusMenu {
+    border-bottom: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+`;
+
+const TabItem = styled.li`
+  font-size: 18px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+
+  .subMenu {
+    color: rgb(98, 98, 98);
+  }
+  .focusMenu {
+    border-bottom: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
   }
 `;

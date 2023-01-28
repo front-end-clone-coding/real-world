@@ -14,7 +14,7 @@ export const __signUp = createAsyncThunk(
   "signUp",
   async (payload, thunkAPI) => {
     try {
-      const data = await axiosInstance.post(`/user`, payload);
+      const data = await axiosInstance.post(`/user/signup`, payload);
       console.log(data);
       console.log(payload);
       return thunkAPI.fulfillWithValue(data.data);

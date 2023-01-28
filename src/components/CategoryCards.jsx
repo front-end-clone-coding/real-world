@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import CategoryMenu from "./CategoryMenu";
 const CategoryCards = () => {
   const { gameInfo } = useSelector((state) => state.mainGameInfoSlice);
   return (
     <>
       <SectionWrap>
-        <h2>🎀리얼월드 인기작🎀</h2>
+        <CategoryMenu />
         <SectionList>
           {gameInfo.map((content) => {
             return (

@@ -8,7 +8,7 @@ const Header = () => {
     <>
       <Nav>
         <Container>
-          <a href onClick={() => navigate("/")}>
+          <div href onClick={() => navigate("/")}>
             <LogImg
               className="logo"
               src="https://cdn.rwd.to/logos/logo_color_white_horizontal.png"
@@ -19,21 +19,21 @@ const Header = () => {
               src="https://cdn.rwd.to/logos/logo_color_black_horizontal.png"
               alt="리얼월드"
             />
-          </a>
+          </div>
           <div>
             <NavbarNav>
               {token ? (
+                <>
+                  <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
+                  <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
+                </>
+              ) : (
                 <>
                   <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
                   <NavItem onClick={() => navigate("/login")}>로그인</NavItem>
                   <NavItem onClick={() => navigate("/signUp")}>
                     회원가입
                   </NavItem>
-                </>
-              ) : (
-                <>
-                  <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
-                  <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
                 </>
               )}
             </NavbarNav>
@@ -64,7 +64,7 @@ const Container = styled.nav`
   justify-content: space-between;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  max-width: 960px;
+  max-width: 1140px;
 `;
 const LogImg = styled.img`
   width: 162px;
