@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+
 import logo from "../../img/logo.svg";
 import OauthInput from "../../components/OauthInput";
 import Button from "../../components/Button";
@@ -81,22 +82,18 @@ const LoginForm = () => {
               계정 하나로 <strong>리얼월드 앱</strong>과<br />
               <strong>리얼월드 스튜디오</strong>에 로그인하세요!
             </p>
-            <a
-              href="#!"
-              onClick={() => {
-                navigate(`/`);
-              }}
-            >
-              <img
-                src="https://ui.realworld.to/images/ui/login_mockup_image.png "
-                alt="img"
-              />
-            </a>
+
+            <img
+              src="https://ui.realworld.to/images/ui/login_mockup_image.png "
+              alt="img"
+            />
           </HeroSection>
           <LoginSection>
             <LoginSloganSection>
               <div>
-                <img className="logo" src={logo} alt="리얼월드" />
+                <a href="/">
+                  <img className="logo" src={logo} alt="리얼월드" />
+                </a>
               </div>
               <p>
                 리얼월드는

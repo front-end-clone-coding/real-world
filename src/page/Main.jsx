@@ -3,7 +3,12 @@ import Header from "../components/Header";
 import GameList from "../features/main/GameList";
 
 const Main = () => {
-  return <GameList />;
+  return (
+    <>
+      <Header />
+      <GameList />
+    </>
+  );
 };
 
 export default Main;

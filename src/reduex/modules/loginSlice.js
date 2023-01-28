@@ -12,8 +12,14 @@ export const __postLogin = createAsyncThunk(
   async ({ user, navigate }, thunkAPI) => {
     try {
       const data = await axiosInstance.post(`user/login`, user);
+      if (data.data.statuscode === 200) {
+        const token = data.headers.get("Authorization");
+        localStorage.setItem("token", token);
+        navigate("/");
+      } else {
+        alert("문제가 생겼습니다.");
+      }
 
-      navigate("/");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       const errorObject = error.response.data;
@@ -38,6 +44,7 @@ export const loginSlice = createSlice({
     },
     [__postLogin.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.loginCheck = true;
     },
     [__postLogin.rejected]: (state, action) => {
       state.isLoading = false;

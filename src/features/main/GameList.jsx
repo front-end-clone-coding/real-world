@@ -1,8 +1,17 @@
-import React from "react";
-import styled from "styled-components";
 import Slider from "../../components/Slider";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+import CategoryCards from "../../components/CategoryCards";
+import { getCategoryGameInfo } from "../../reduex/modules/mainGameInfoSlice";
 
 const GameList = () => {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategoryGameInfo());
+  }, []);
+  
   return (
     <div>
       <div>
@@ -26,16 +35,17 @@ const GameList = () => {
       </div>
       <div>
         <div>
-          <div>리얼월드 인기작</div>
+           <Dived />
+      <CategoryCards />
         </div>
         <div>
-          <div>게임 카드 자리</div>
+          <Dived />
+      <CategoryCards />
         </div>
       </div>
     </div>
   );
 };
-
 export default GameList;
 
 const Title1 = styled.div`
@@ -52,4 +62,26 @@ const SliderContainer = styled.div`
   border: 2px solid black;
   padding: 20px;
   height: 100%;
+  `;
+  
+const Dived = styled.div`
+  margin-bottom: 48px;
+  margin-top: 32px;
+  width: 100%;
+  height: 16px;
+  max-width: 1092px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: linear-gradient(
+    to top,
+    rgb(250, 250, 250) 18%,
+    rgb(248, 248, 248) 73%,
+    rgb(245, 245, 245) 83%
+  );
+  background-image: linear-gradient(
+    to bottom,
+    rgb(250, 250, 250) 18%,
+    rgb(248, 248, 248) 73%,
+    rgb(245, 245, 245) 83%
+  );
 `;
