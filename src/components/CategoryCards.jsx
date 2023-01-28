@@ -30,6 +30,7 @@ const CategoryCards = () => {
 
 export default CategoryCards;
 const SectionWrap = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
   width: 100%;
   max-width: 1140px;
   box-sizing: border-box;
