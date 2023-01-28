@@ -6,12 +6,11 @@ import CategoryCards from "../../components/CategoryCards";
 import { getCategoryGameInfo } from "../../reduex/modules/mainGameInfoSlice";
 
 const GameList = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryGameInfo());
   }, []);
-  
+
   return (
     <div>
       <div>
@@ -22,9 +21,10 @@ const GameList = () => {
           <Slider />
         </SliderContainer>
       </div>
-      <div>
-        <div>추천 / 무료</div>
-      </div>
+      <Menubar>
+        <div>추천</div>
+        <div>무료</div>
+      </Menubar>
       <div>
         <div>
           <div>카테고리</div>
@@ -35,12 +35,12 @@ const GameList = () => {
       </div>
       <div>
         <div>
-           <Dived />
-      <CategoryCards />
+          <Dived />
+          <CategoryCards />
         </div>
         <div>
           <Dived />
-      <CategoryCards />
+          <CategoryCards />
         </div>
       </div>
     </div>
@@ -49,8 +49,6 @@ const GameList = () => {
 export default GameList;
 
 const Title1 = styled.div`
-  border: 2px solid black;
-
   padding: 30px;
   margin-top: 30px;
 
@@ -62,8 +60,25 @@ const SliderContainer = styled.div`
   border: 2px solid black;
   padding: 20px;
   height: 100%;
-  `;
-  
+`;
+
+const Menubar = styled.div`
+  width: 100%;
+  height: 50px;
+
+  border: 2px solid black;
+
+  font-size: large;
+  font-weight: 700;
+
+  display: flex;
+
+  div {
+    padding: 10px;
+    border: 2px solid black;
+  }
+`;
+
 const Dived = styled.div`
   margin-bottom: 48px;
   margin-top: 32px;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -8,7 +9,7 @@ const Header = () => {
     <>
       <Nav>
         <Container>
-          <a href onClick={() => navigate("/")}>
+          <div onClick={() => navigate("/")}>
             <LogImg
               className="logo"
               src="https://cdn.rwd.to/logos/logo_color_white_horizontal.png"
@@ -19,21 +20,21 @@ const Header = () => {
               src="https://cdn.rwd.to/logos/logo_color_black_horizontal.png"
               alt="리얼월드"
             />
-          </a>
+          </div>
           <div>
             <NavbarNav>
               {token ? (
+                <>
+                  <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
+                  <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
+                </>
+              ) : (
                 <>
                   <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
                   <NavItem onClick={() => navigate("/login")}>로그인</NavItem>
                   <NavItem onClick={() => navigate("/signUp")}>
                     회원가입
                   </NavItem>
-                </>
-              ) : (
-                <>
-                  <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
-                  <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
                 </>
               )}
             </NavbarNav>
