@@ -4,9 +4,10 @@ import GameList from "../features/main/GameList";
 
 const Main = () => {
   return (
-    <Header>
+    <>
+      <Header />
       <GameList />
-    </Header>
+    </>
   );
 };
 
