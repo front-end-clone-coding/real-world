@@ -25,13 +25,13 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: grey;
+  background-color: transparent;
 
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex;
+  display: grid;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;

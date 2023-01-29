@@ -42,10 +42,10 @@ const Footer = () => {
 
 export default Footer;
 
-const FootContainer = styled.div`
+const FootContainer = styled.footer`
   background-color: #0a111e;
 
-  padding: 20px 100px 60px 100px;
+  padding: 20px 100px 60px 400px;
 
   width: 100%;
   height: 200px;

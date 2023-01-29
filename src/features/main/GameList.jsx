@@ -26,7 +26,6 @@ const GameList = () => {
       </div>
       <div>
         <Tab Categorylist={Categorylist} />
-
       </div>
     </div>
   );
@@ -44,7 +43,7 @@ const Title1 = styled.div`
 const SliderContainer = styled.div`
   border: 2px solid black;
   padding: 20px;
-  height: 100%;
+  height: 500px;
 `;
 
 const Menubar = styled.div`
