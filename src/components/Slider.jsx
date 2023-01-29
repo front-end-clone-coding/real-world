@@ -20,7 +20,7 @@ export default function Slider() {
         modules={[Autoplay]}
         autoplay={{ delay: 1000 }}
         disableOnInteraction={false}
-        pauseOnMouseEnter={true}
+        //pauseOnMouseEnter={true}
         className="mySwiper"
       >
         <SwiperSlide>
