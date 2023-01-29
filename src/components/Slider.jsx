@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-
 import "./Style.css";
 
 // import required modules
@@ -16,9 +15,8 @@ export default function Slider() {
       <Swiper
         slidesPerView={5}
         spaceBetween={30}
-        //loop={true}
-        //loopFillGroupWithBlank={true}
-        // navigation={true}
+        loop={true}
+        loopFillGroupWithBlank={true}
         modules={[Autoplay]}
         autoplay={{ delay: 1000 }}
         disableOnInteraction={false}

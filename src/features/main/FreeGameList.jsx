@@ -50,12 +50,9 @@ const Free = () => {
                   <h2>{content.gameTitle}</h2>
                   <div>
                     <p className="gamePrice">{content.gamePrice}</p>
-<<<<<<< Updated upstream
-=======
                   </div>
                   <div>
                     <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
->>>>>>> Stashed changes
                   </div>
                 </Information>
               </div>

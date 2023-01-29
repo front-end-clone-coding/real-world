@@ -23,5 +23,62 @@
       "password": "12341234",
       "id": 2
     }
+  ],
+
+  "freegameInfo": [
+    {
+      "category": true,
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 1
+    },
+    {
+      "category": false,
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 2
+    },
+    {
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 3
+    },
+    {
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 4
+    }
+  ],
+  "bestgameInfo": [
+    {
+      "category": true,
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 1
+    },
+    {
+      "category": false,
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 2
+    },
+    {
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 3
+    },
+    {
+      "gameImg": "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      "gameTitle": "리얼월드 인기작1",
+      "gamePrice": "무료",
+      "id": 4
+    }
   ]
 }

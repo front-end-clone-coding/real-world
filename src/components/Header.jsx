@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -8,7 +9,7 @@ const Header = () => {
     <>
       <Nav>
         <Container>
-          <div href onClick={() => navigate("/")}>
+          <div onClick={() => navigate("/")}>
             <LogImg
               className="logo"
               src="https://cdn.rwd.to/logos/logo_color_white_horizontal.png"
