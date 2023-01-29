@@ -36,9 +36,9 @@ const Free = () => {
   ];
   return (
     <>
-      <Dived />
       <SectionWrap>
-        <CategoryMenu />
+        <Dived />
+        <CategoryMenu>🎠리얼월드 필수 코스 5!🎠</CategoryMenu>
         <SectionList>
           {gameInfo.map((content) => {
             return (
@@ -49,7 +49,13 @@ const Free = () => {
                 <Information>
                   <h2>{content.gameTitle}</h2>
                   <div>
-                    <p>{content.gamePrice}</p>
+                    <p className="gamePrice">{content.gamePrice}</p>
+<<<<<<< Updated upstream
+=======
+                  </div>
+                  <div>
+                    <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
+>>>>>>> Stashed changes
                   </div>
                 </Information>
               </div>
@@ -70,18 +76,6 @@ const Dived = styled.div`
   max-width: 1092px;
   margin-left: auto;
   margin-right: auto;
-  background-color: linear-gradient(
-    to top,
-    rgb(250, 250, 250) 18%,
-    rgb(248, 248, 248) 73%,
-    rgb(245, 245, 245) 83%
-  );
-  background-image: linear-gradient(
-    to bottom,
-    rgb(250, 250, 250) 18%,
-    rgb(248, 248, 248) 73%,
-    rgb(245, 245, 245) 83%
-  );
 `;
 
 const SectionWrap = styled.div`
@@ -114,15 +108,21 @@ const GameImgBox = styled.div`
 
 const Information = styled.div`
   h2 {
-    font-size: 15px;
+    font-size: 20px;
     margin-bottom: 0px;
     font-weight: 500;
     line-height: 23px;
     max-height: 46px;
   }
   p {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 16px;
+    max-height: 32px;
+    font-weight: 500;
     color: rgb(98, 98, 98);
+  }
+  .gamePrice {
+    font-size: 15px;
+    line-height: 20px;
   }
 `;
