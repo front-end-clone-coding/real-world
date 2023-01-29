@@ -90,6 +90,8 @@ const SectionWrap = styled.div`
 `;
 
 const SectionList = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
   padding-bottom: 24px;
 `;
 

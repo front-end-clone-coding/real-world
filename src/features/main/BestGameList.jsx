@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CategoryCards from "../../components/CategoryCards";
+import CategoryCards from "../../components/gameInfoCard/CategoryCards";
 import CategoryMenu from "../../components/CategoryMenu";
 
 const BestGameList = () => {

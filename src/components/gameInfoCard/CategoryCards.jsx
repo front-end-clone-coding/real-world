@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import "swiper/css/navigation";
 import { useSelector } from "react-redux";
-import CategoryMenu from "./CategoryMenu";
+import CategoryMenu from "../CategoryMenu";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+
 const CategoryCards = () => {
   const { gameInfo } = useSelector((state) => state.mainGameInfoSlice);
   return (
@@ -8,21 +13,30 @@ const CategoryCards = () => {
       <SectionWrap>
         <CategoryMenu>🎀리얼월드 인기작🎀</CategoryMenu>
         <SectionList>
-          {gameInfo.map((content) => {
-            return (
-              <SectionGap key={content.id}>
-                <GameImgBox>
-                  <img src={content.gameImg} alt={content.gameTitle} />
-                </GameImgBox>
-                <Information>
-                  <h2>{content.gameTitle}</h2>
-                  <div>
-                    <p>{content.gamePrice}</p>
-                  </div>
-                </Information>
-              </SectionGap>
-            );
-          })}
+          <Swiper
+            slidesPerView={4}
+            Navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+          >
+            {gameInfo.map((content) => {
+              return (
+                <SwiperSlide>
+                  <SectionGap key={content.id}>
+                    <GameImgBox>
+                      <img src={content.gameImg} alt={content.gameTitle} />
+                    </GameImgBox>
+                    <Information>
+                      <h2 className="gameTitle">{content.gameTitle}</h2>
+                      <div>
+                        <p>{content.gamePrice}</p>
+                      </div>
+                    </Information>
+                  </SectionGap>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </SectionList>
       </SectionWrap>
     </>
@@ -35,7 +49,6 @@ const SectionWrap = styled.div`
   width: 100%;
   max-width: 1140px;
   box-sizing: border-box;
-
   margin-left: auto;
   margin-right: auto;
   padding: 0 1.5rem;
@@ -66,16 +79,18 @@ const GameImgBox = styled.div`
     border-radius: 8px;
     width: 250px;
     height: 168px;
+    width: 100%;
   }
 `;
 const Information = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  float: left;
   h2 {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 0px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 23px;
     max-height: 46px;
   }
