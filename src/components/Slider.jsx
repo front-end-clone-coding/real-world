@@ -1,15 +1,47 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "./Style.css";
-
 // import required modules
 import { Autoplay } from "swiper";
 
 export default function Slider() {
+  const navigate = useNavigate();
+  const gameInfo = [
+    {
+      category: true,
+      gameImg:
+        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      gameTitle: "리얼월드 인기작1",
+      gameDesc: "무료",
+      id: 1,
+    },
+    {
+      category: false,
+      gameImg:
+        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      gameTitle: "리얼월드 인기작1",
+      gameDesc: "무료",
+      id: 2,
+    },
+    {
+      gameImg:
+        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      gameTitle: "리얼월드 인기작1",
+      gameDesc: "무료",
+      id: 3,
+    },
+    {
+      gameImg:
+        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+      gameTitle: "리얼월드 인기작1",
+      gameDesc: "무료",
+      id: 4,
+    },
+  ];
   return (
     <>
       <Swiper
@@ -23,35 +55,17 @@ export default function Slider() {
         //pauseOnMouseEnter={true}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img
-            src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg"
-            alt="게임1"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://cdn.realworld.to/user-files/ZhZf13RTauX2VVqNtUgVvA/20-10-23-09-24-48_1LU_VoYeHc0.jpg"
-            alt="게임2"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://cdn.realworld.to/user-files/Tginio2cOCaT3J0bF1rvpg/22-11-09-08-54-52_j0kaDx6mXG4.jpg"
-            alt="게임3"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://cdn.realworld.to/user-files/jgWcGgj-rzR5YHLxKwsNFA/21-11-02-07-29-32_uCsuZj6AI2Q.png"
-            alt="게임4"
-          />
-        </SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {gameInfo.map((card) => {
+          return (
+            <SwiperSlide key={card.id} onClick={navigate("/")}>
+              <div>
+                <img src={card.gameImg} alt={card.gameTitle} />
+                <h2>{card.gameTitle}</h2>
+                <p>{card.gameDesc}</p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );
