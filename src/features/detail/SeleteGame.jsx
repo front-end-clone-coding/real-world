@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import Tab from "../../components/Tab";
 import DetailGameInfo from "./DetailGameInfo";
-const SeleteGame = () => {
+const SeleteGame = ({ visible }) => {
   const Categorylist = ["게임소개", "상세정보", "게임후기"];
   const games = {
     id: 4,
@@ -34,7 +34,7 @@ const SeleteGame = () => {
       <LeftContainer>
         <GameTitleImg src={games.titleImg} alt={games.gameTitle} />
         <MenuTap>
-          <Tab Categorylist={Categorylist} />
+          <Tab Categorylist={Categorylist} visible={visible} />
         </MenuTap>
       </LeftContainer>
       <RightContainer>
