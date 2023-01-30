@@ -14,7 +14,7 @@ export default function Slider() {
     {
       category: true,
       gameImg:
-        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
+        "https://cdn.realworld.to/user-files/DBqrgoLAyLAiCL-aMSgv0g/22-12-06-02-18-31_7lf5sNLdLIA.jpg",
       gameTitle: "리얼월드 인기작1",
       gameDesc: "무료",
       id: 1,
@@ -57,9 +57,19 @@ export default function Slider() {
       >
         {gameInfo.map((card) => {
           return (
-            <SwiperSlide key={card.id} onClick={navigate("/")}>
+            <SwiperSlide
+              style={{ width: "200px", height: "300px" }}
+              key={card.id}
+              onClick={() => {
+                navigate(`/Detail/${card.id}`);
+              }}
+            >
               <div>
-                <img src={card.gameImg} alt={card.gameTitle} />
+                <img
+                  style={{ width: "300px", height: "400px" }}
+                  src={card.gameImg}
+                  alt={card.gameTitle}
+                />
                 <h2>{card.gameTitle}</h2>
                 <p>{card.gameDesc}</p>
               </div>
