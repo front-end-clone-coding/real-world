@@ -1,7 +1,6 @@
 import React from "react";
 import SeleteGame from "../features/detail/SeleteGame";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 const Detail = () => {
   const [position, setPosition] = useState({
@@ -30,7 +29,6 @@ const Detail = () => {
         setVisible({ ...visible, tabVisible: true });
         setPosition({ ...position, tabPosition: moving });
       }
-      console.log(moving, moving);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {

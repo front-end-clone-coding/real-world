@@ -1,17 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
-
-const DetailGameInfo = ({ games }) => {
+import { useSelector } from "react-redux";
+const DetailGameInfo = () => {
+  const { GameDetailDescriptionTextInfo } = useSelector(
+    (state) => state.mainGameInfoSlice
+  );
+  let kit = "";
+  console.log(GameDetailDescriptionTextInfo);
+  if (GameDetailDescriptionTextInfo.kit) {
+    kit = "있음";
+  } else {
+    kit = "없음";
+  }
   return (
     <GameTitleContainer>
       <div className="wrap">
         <InfoCategory>
-          <div>{games.playType}</div>
+          <div>{GameDetailDescriptionTextInfo.playType}</div>
         </InfoCategory>
 
         <InfoHeader>
-          <div className="producTitle">{games.gameTitle}</div>
+          <div className="producTitle">
+            {GameDetailDescriptionTextInfo.gameTitle}
+          </div>
           <div className="productSaltePrice">무료</div>
         </InfoHeader>
         <ProductCreatorName>
@@ -21,7 +33,7 @@ const DetailGameInfo = ({ games }) => {
               alt="리얼월드 로고 이미지"
             />
           </ProductImgWrap>
-          <div>{games.createdAt}</div>
+          <div>{GameDetailDescriptionTextInfo.createdAt}</div>
           <ProductImgWrap>
             <img
               src="https://realworld.to/images/basic_information/Icon_RealworldBadge.svg"
@@ -38,7 +50,7 @@ const DetailGameInfo = ({ games }) => {
                 alt="별"
               />
             </ProductImgWrap>
-            <div>{games.star}</div>
+            <div>{GameDetailDescriptionTextInfo.star}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
@@ -47,7 +59,7 @@ const DetailGameInfo = ({ games }) => {
                 alt="퍼즐조각"
               />
             </ProductImgWrap>
-            <div>{games.difficulty}</div>
+            <div>{GameDetailDescriptionTextInfo.difficulty}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
@@ -56,7 +68,7 @@ const DetailGameInfo = ({ games }) => {
                 alt="시계"
               />
             </ProductImgWrap>
-            <div>{games.playTime}</div>
+            <div>{GameDetailDescriptionTextInfo.playTime}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
@@ -65,7 +77,7 @@ const DetailGameInfo = ({ games }) => {
                 alt="별"
               />
             </ProductImgWrap>
-            <div>{games.kit}</div>
+            <div>{kit}</div>
           </ItemWrap>
         </ProductOptions>
         <Button>댓글 달기</Button>

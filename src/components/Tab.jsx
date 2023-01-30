@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
 import GameIntro from "../features/detail/GameIntro";
-
+import GameComment from "../features/detail/comment/GameComment";
 const Tab = ({ Categorylist, visible }) => {
   let components;
   if (Categorylist[0] === "추천") {
@@ -24,8 +24,10 @@ const Tab = ({ Categorylist, visible }) => {
         break;
       case "게임소개":
         SetcurrentTab(<GameIntro />);
+        break;
       case "게임후기":
-      // SetcurrentTab();
+        SetcurrentTab(<GameComment />);
+        break;
       default:
         break;
     }
