@@ -8,7 +8,7 @@ const Detail = () => {
     <>
       <Header />
       <SeleteGame />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
