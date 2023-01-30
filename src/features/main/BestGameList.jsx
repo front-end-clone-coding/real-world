@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import CategoryCards from "../../components/gameInfoCard/CategoryCards";
 import CategoryMenu from "../../components/CategoryMenu";
-
+import { useSelector } from "react-redux";
 const BestGameList = () => {
+  const { bestgameInfo, Gamecategory } = useSelector(
+    (state) => state.mainGameInfoSlice
+  );
+
   return (
     <>
       <CategoryContainer>
@@ -50,14 +54,14 @@ const BestGameList = () => {
         </CategoryList>
       </CategoryContainer>
       <div>
-        <div>
-          <Dived />
-          <CategoryCards />
-        </div>
-        <div>
-          <Dived />
-          <CategoryCards />
-        </div>
+        {Gamecategory.map((item) => {
+          return (
+            <div key={item}>
+              <Dived />
+              <CategoryCards gameInfo={bestgameInfo} Gamecategory={item} />
+            </div>
+          );
+        })}
       </div>
     </>
   );

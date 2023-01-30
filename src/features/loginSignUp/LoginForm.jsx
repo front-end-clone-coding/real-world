@@ -69,7 +69,7 @@ const LoginForm = () => {
       password.focus();
       return;
     }
-    const user = { email: email.value, pw: password.value };
+    const user = { email: email.value, password: password.value };
     dispatch(__postLogin({ user, navigate }));
   };
 

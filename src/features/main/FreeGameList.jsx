@@ -1,46 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import CategoryMenu from "../../components/CategoryMenu";
+import { useSelector } from "react-redux";
 const Free = () => {
-  const gameInfo = [
-    {
-      category: true,
-      gameImg:
-        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
-      gameTitle: "리얼월드 인기작1",
-      gamePrice: "무료",
-      id: 1,
-    },
-    {
-      category: false,
-      gameImg:
-        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
-      gameTitle: "리얼월드 인기작1",
-      gamePrice: "무료",
-      id: 2,
-    },
-    {
-      gameImg:
-        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
-      gameTitle: "리얼월드 인기작1",
-      gamePrice: "무료",
-      id: 3,
-    },
-    {
-      gameImg:
-        "https://cdn.realworld.to/user-files/KtkDjeNGuVtRLXJcPGizQg/22-08-26-13-21-36_AfyiKDRnYw0.png",
-      gameTitle: "리얼월드 인기작1",
-      gamePrice: "무료",
-      id: 4,
-    },
-  ];
+  const { FreeGameInfo } = useSelector((state) => state.mainGameInfoSlice);
+
   return (
     <>
       <SectionWrap>
         <Dived />
         <CategoryMenu>🎠리얼월드 필수 코스 5!🎠</CategoryMenu>
         <SectionList>
-          {gameInfo.map((content) => {
+          {FreeGameInfo.map((content) => {
             return (
               <SectionGap key={content.id}>
                 <GameImgBox>
@@ -50,9 +21,6 @@ const Free = () => {
                   <h2>{content.gameTitle}</h2>
                   <div>
                     <p className="gamePrice">{content.gamePrice}</p>
-                  </div>
-                  <div>
-                    <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
                   </div>
                   <div>
                     <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
@@ -91,29 +59,34 @@ const SectionWrap = styled.div`
 
 const SectionList = styled.div`
   display: grid;
+  min-width: 150px;
   grid-template-columns: 50% 50%;
   padding-bottom: 24px;
 `;
 
 const SectionGap = styled.div`
+  margin-bottom: 20px;
+  min-width: 150px;
   display: flex;
-  gap: 16px;
+  gap: 20px;
 `;
 
 const GameImgBox = styled.div`
   img {
-    object-fit: cover;
     border-radius: 8px;
-    width: 142px;
-    height: 200px;
+    min-width: 150px;
+    width: 190px;
+    height: 256px;
   }
 `;
 
 const Information = styled.div`
+  min-width: 150px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 15px;
   h2 {
+    min-width: 150px;
     font-size: 20px;
     margin-bottom: 0px;
     font-weight: 700;
@@ -121,6 +94,7 @@ const Information = styled.div`
     max-height: 48px;
   }
   p {
+    min-width: 150px;
     font-size: 13px;
     line-height: 16px;
     max-height: 32px;
@@ -128,6 +102,7 @@ const Information = styled.div`
     color: rgb(98, 98, 98);
   }
   .gamePrice {
+    min-width: 150px;
     font-size: 15px;
     line-height: 20px;
   }

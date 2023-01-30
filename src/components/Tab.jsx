@@ -53,6 +53,7 @@ const Tab = ({ Categorylist }) => {
 
 export default Tab;
 const TabContainer = styled.div`
+  padding-top: 20px;
   height: auto;
   border-bottom: 1px solid rgb(237, 237, 237);
 `;
