@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import Tab from "../../components/Tab";
 
 const SeleteGame = () => {
-  const Categorylist = ["게임소개", "상세정보"];
+  const Categorylist = ["게임소개", "상세정보", "게임후기"];
   const games = {
     id: 4,
     playType: "mobile",
@@ -36,29 +36,6 @@ const SeleteGame = () => {
         <MenuTap>
           <Tab Categorylist={Categorylist} />
         </MenuTap>
-        <GameShoot>
-          <div>게임 소개</div>
-          <div>스크린샷 들어갈자리</div>
-          {/* {games.screenShot.map((img) => {
-            return <img src={img.length[0]} alt="shot" />;
-          })} */}
-
-          <div />
-        </GameShoot>
-        <GameDescContainer>
-          <div>스토리</div>
-          <div>스토리 내용</div>
-        </GameDescContainer>
-        <GameInfo>
-          <div>상세정보</div>
-          <div>
-            <div>기본정보</div>
-            <div>
-              <div>권장인원</div>
-              <div>1명</div>
-            </div>
-          </div>
-        </GameInfo>
       </LeftContainer>
       <RightContainer>
         <GameTitleContainer>
@@ -98,35 +75,32 @@ const PageWrap = styled.div`
 `;
 const LeftContainer = styled.div``;
 const GameTitleImg = styled.img`
-  border: 2px solid black;
+  /* border: 2px solid black; */
 
   width: 600px;
   height: 500px;
 `;
 const MenuTap = styled.div`
-  border: 2px solid black;
-
-  width: 600px;
-  height: 100px;
+  /* border: 2px solid black; */
 `;
 const GameShoot = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
 
   width: 600px;
   height: 300px;
 `;
 const GameDescContainer = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
 
   width: 600px;
   height: 200px;
 `;
 const GameInfo = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
 `;
 const RightContainer = styled.div``;
 const GameTitleContainer = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 600px;
   height: 200px;
 `;

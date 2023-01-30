@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
+import GameIntro from "../features/detail/GameIntro";
 
 const Tab = ({ Categorylist }) => {
   let components;
@@ -21,6 +22,10 @@ const Tab = ({ Categorylist }) => {
       case "추천":
         SetcurrentTab(<BestGameList />);
         break;
+      case "게임소개":
+        SetcurrentTab(<GameIntro />);
+      case "게임후기":
+      // SetcurrentTab();
       default:
         break;
     }
