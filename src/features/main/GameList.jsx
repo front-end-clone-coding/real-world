@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {
   getBestGameInfo,
   getFreeGameInfo,
+  getMainGameInfo,
 } from "../../reduex/modules/mainGameInfoSlice";
 import Tab from "../../components/Tab";
 
@@ -13,6 +14,7 @@ const GameList = ({ visible }) => {
   useEffect(() => {
     dispatch(getBestGameInfo());
     dispatch(getFreeGameInfo());
+    dispatch(getMainGameInfo());
   }, []);
 
   //Tab

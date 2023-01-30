@@ -15,7 +15,7 @@ const Free = () => {
             return (
               <SectionGap key={content.id}>
                 <GameImgBox>
-                  <img src={content.gameImg} alt={content.gameTitle} />
+                  <img src={content.titleImg} alt={content.gameTitle} />
                 </GameImgBox>
                 <Information>
                   <h2>{content.gameTitle}</h2>
@@ -23,7 +23,7 @@ const Free = () => {
                     <p className="gamePrice">{content.gamePrice}</p>
                   </div>
                   <div>
-                    <p>내 추리력은 몇 점❓ 리얼월드와 함께 추리 스무고개 ⛰️</p>
+                    <p>{content.gameDesc}</p>
                   </div>
                 </Information>
               </SectionGap>
