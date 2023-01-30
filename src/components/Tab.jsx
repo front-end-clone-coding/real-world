@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
 
-const Tab = ({ Categorylist }) => {
+const Tab = ({ Categorylist, visible }) => {
   let components;
   if (Categorylist[0] === "추천") {
     components = <BestGameList />;
@@ -30,7 +30,7 @@ const Tab = ({ Categorylist }) => {
   return (
     <>
       <TabContainer>
-        <TabMenuUl>
+        <TabMenuUl move={visible.tabVisible ? "white" : "transparent"}>
           {Categorylist.map((content, index) => {
             return (
               <li
@@ -58,34 +58,22 @@ const TabContainer = styled.div`
   border-bottom: 1px solid rgb(237, 237, 237);
 `;
 const TabMenuUl = styled.ul`
+  background-color: ${(props) => props.move};
+  position: sticky;
+  top: 50px;
   width: 100%;
   max-width: 1140px;
   padding: 0 1.5rem;
   display: flex;
   margin-left: auto;
   margin-right: auto;
-
+  z-index: 2;
   li {
     font-size: 18px;
     padding: 10px 16px;
     font-weight: bold;
     cursor: pointer;
   }
-  .subMenu {
-    color: rgb(98, 98, 98);
-  }
-  .focusMenu {
-    border-bottom: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
-  }
-`;
-
-const TabItem = styled.li`
-  font-size: 18px;
-  padding: 10px 16px;
-  font-weight: bold;
-  cursor: pointer;
-
   .subMenu {
     color: rgb(98, 98, 98);
   }

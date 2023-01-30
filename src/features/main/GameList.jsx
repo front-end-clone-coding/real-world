@@ -8,7 +8,7 @@ import {
 } from "../../reduex/modules/mainGameInfoSlice";
 import Tab from "../../components/Tab";
 
-const GameList = () => {
+const GameList = ({ visible }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBestGameInfo());
@@ -29,7 +29,7 @@ const GameList = () => {
         </SliderContainer>
       </div>
       <div>
-        <Tab Categorylist={Categorylist} />
+        <Tab Categorylist={Categorylist} visible={visible} />
       </div>
     </div>
   );
@@ -42,6 +42,7 @@ const Title1 = styled.div`
 
   font-size: large;
   font-weight: 800;
+  background-color: ${(props) => props.move};
 `;
 
 const SliderContainer = styled.div`

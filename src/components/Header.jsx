@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const Header = () => {
+const Header = ({ visible }) => {
   const navigate = useNavigate();
   const { loginCheck } = useSelector((state) => state.loginSlice);
-  console.log(loginCheck);
+  console.log(visible.headerVisible);
   return (
     <>
-      <Nav>
+      <Nav move={visible.headerVisible ? "white" : "transparent"}>
         <Container>
           <div onClick={() => navigate("/")}>
+            {/* <LogImg
+                className="logo"
+                src="https://cdn.rwd.to/logos/logo_color_white_horizontal.png"
+                alt="리얼월드"
+              /> */}
+
             <LogImg
-              className="logo"
-              src="https://cdn.rwd.to/logos/logo_color_white_horizontal.png"
-              alt="리얼월드"
-            />
-            <LogImg2
               className="logo"
               src="https://cdn.rwd.to/logos/logo_color_black_horizontal.png"
               alt="리얼월드"
@@ -57,13 +58,8 @@ const Nav = styled.nav`
   left: 0;
   z-index: 1030;
   width: 100%;
+  background-color: ${(props) => props.move};
   font-family: "Noto Sans KR", sans-serif;
-  .notMove {
-    background-color: transparent;
-  }
-  .move {
-    background-color: white;
-  }
 `;
 const Container = styled.nav`
   display: flex;
@@ -78,11 +74,7 @@ const LogImg = styled.img`
   width: 162px;
   height: 36px;
 `;
-const LogImg2 = styled.img`
-  display: none;
-  width: 162px;
-  height: 36px;
-`;
+
 const navbarCollapse = styled.div``;
 const NavbarNav = styled.ul`
   display: flex;

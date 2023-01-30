@@ -2,11 +2,13 @@ import styled from "styled-components";
 import "swiper/css/navigation";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 import { Navigation } from "swiper";
 import "swiper/css";
 import CategoryMenu from "../CategoryMenu";
 
 const CategoryCards = ({ gameInfo, Gamecategory }) => {
+  const navigate = useNavigate();
   const category = gameInfo.filter((item) => item.category === Gamecategory);
   return (
     <>
@@ -28,7 +30,12 @@ const CategoryCards = ({ gameInfo, Gamecategory }) => {
           >
             {category.map((item, idx) => (
               <SwiperSlide key={idx}>
-                <SectionGap key={item.id}>
+                <SectionGap
+                  key={item.id}
+                  onClick={() => {
+                    navigate(`/Detail/${item.id}`);
+                  }}
+                >
                   <GameImgBox>
                     <img src={item.titleImg} alt={item.gameTitle} />
                   </GameImgBox>
@@ -74,6 +81,7 @@ const SectionGap = styled.div`
   flex-direction: column;
   gap: 8px;
   padding-right: 15px;
+  cursor: pointer;
 `;
 
 const GameImgBox = styled.div`

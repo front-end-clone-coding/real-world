@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Tab from "../../components/Tab";
-
+import DetailGameInfo from "./DetailGameInfo";
 const SeleteGame = () => {
   const Categorylist = ["게임소개", "상세정보"];
   const games = {
@@ -15,7 +15,7 @@ const SeleteGame = () => {
     titleImg:
       "https://cdn.realworld.to/user-files/DBqrgoLAyLAiCL-aMSgv0g/22-12-06-02-18-25_-S-MNESaKGk.jpg",
     // gameImg=["링크1","링크2","..."],
-    star: String,
+    star: "후기 4.3점 (145)",
     story:
       "꿈속에서만 운영하는 레스토랑이 있다...?잠이 들자마자 희한한 곳에서 눈을 뜬 당신,오로라 레스토랑의 새로운 일원이 되는데...",
     screenShot: [
@@ -61,26 +61,7 @@ const SeleteGame = () => {
         </GameInfo>
       </LeftContainer>
       <RightContainer>
-        <GameTitleContainer>
-          <div>
-            <div>게임 타이틀</div>
-            <div>무료</div>
-          </div>
-          <div>
-            <div> 후기 점수 들어감</div>
-            <Button>댓글 달기</Button>
-          </div>
-          <div>
-            <div>댓글 입력 칸</div>
-            <button>등록</button>
-          </div>
-          <div>
-            <div>게임후기</div>
-            <div>
-              <div>댓글 영역</div>
-            </div>
-          </div>
-        </GameTitleContainer>
+        <DetailGameInfo games={games} />
       </RightContainer>
     </PageWrap>
   );
@@ -94,12 +75,10 @@ const PageWrap = styled.div`
   padding-right: auto;
   display: flex;
   justify-content: center;
-  gap: 20px;
 `;
 const LeftContainer = styled.div``;
 const GameTitleImg = styled.img`
   border: 2px solid black;
-
   width: 600px;
   height: 500px;
 `;
@@ -124,9 +103,6 @@ const GameDescContainer = styled.div`
 const GameInfo = styled.div`
   border: 2px solid black;
 `;
-const RightContainer = styled.div``;
-const GameTitleContainer = styled.div`
-  border: 2px solid black;
-  width: 600px;
-  height: 200px;
+const RightContainer = styled.div`
+  padding-left: 12px;
 `;
