@@ -15,7 +15,7 @@ const Free = () => {
             return (
               <SectionGap key={content.id}>
                 <GameImgBox>
-                  <img src={content.titleImg} alt={content.gameTitle} />
+                  <img src={content.titleImg} alt={content.titleImg} />
                 </GameImgBox>
                 <Information>
                   <h2>{content.gameTitle}</h2>

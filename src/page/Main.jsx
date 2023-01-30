@@ -30,7 +30,6 @@ const Main = () => {
         setVisible({ ...visible, tabVisible: true });
         setPosition({ ...position, tabPosition: moving });
       }
-      console.log(moving, moving);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {

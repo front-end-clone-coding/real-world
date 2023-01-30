@@ -6,7 +6,6 @@ import styled from "styled-components";
 const Header = ({ visible }) => {
   const navigate = useNavigate();
   const { loginCheck } = useSelector((state) => state.loginSlice);
-  console.log(visible.headerVisible);
   return (
     <>
       <Nav move={visible.headerVisible ? "white" : "transparent"}>
