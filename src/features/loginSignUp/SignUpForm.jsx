@@ -104,6 +104,7 @@ export const SignUpForm = () => {
         userName: userName.value,
         email: email.value,
         password: password.value,
+        passwordCheck: passwordCheck.value,
       })
     );
   };

@@ -3,14 +3,23 @@ import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
 const Tab = ({ Categorylist }) => {
-  const [currentTab, SetcurrentTab] = useState(<BestGameList />);
+  let components;
+  if (Categorylist[0] === "추천") {
+    components = <BestGameList />;
+  }
+  const [currentTab, SetcurrentTab] = useState(components);
   const [currentTabIndex, SetcurrentTabIndex] = useState(0);
   const onClickTabHandler = (index, content) => {
     SetcurrentTabIndex(index);
-    if (content === "무료") {
-      SetcurrentTab(<FreeGameList />);
-    } else if (content === "추천") {
-      SetcurrentTab(<BestGameList />);
+    switch (content) {
+      case "무료":
+        SetcurrentTab(<FreeGameList />);
+        break;
+      case "추천":
+        SetcurrentTab(<BestGameList />);
+        break;
+      default:
+        break;
     }
   };
 
@@ -41,6 +50,7 @@ const Tab = ({ Categorylist }) => {
 
 export default Tab;
 const TabContainer = styled.div`
+  padding-top: 20px;
   height: auto;
   border-bottom: 1px solid rgb(237, 237, 237);
 `;

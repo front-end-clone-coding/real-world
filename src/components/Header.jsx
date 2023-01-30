@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Header = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const { loginCheck } = useSelector((state) => state.loginSlice);
+  console.log(loginCheck);
   return (
     <>
       <Nav>
@@ -23,7 +25,7 @@ const Header = () => {
           </div>
           <div>
             <NavbarNav>
-              {token ? (
+              {loginCheck ? (
                 <>
                   <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
                   <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
@@ -54,9 +56,14 @@ const Nav = styled.nav`
   right: 0;
   left: 0;
   z-index: 1030;
-  background-color: transparent;
   width: 100%;
   font-family: "Noto Sans KR", sans-serif;
+  .notMove {
+    background-color: transparent;
+  }
+  .move {
+    background-color: white;
+  }
 `;
 const Container = styled.nav`
   display: flex;

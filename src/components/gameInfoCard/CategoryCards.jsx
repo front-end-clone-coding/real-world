@@ -1,41 +1,46 @@
 import styled from "styled-components";
 import "swiper/css/navigation";
 import { useSelector } from "react-redux";
-import CategoryMenu from "../CategoryMenu";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
+import CategoryMenu from "../CategoryMenu";
 
-const CategoryCards = () => {
-  const { gameInfo } = useSelector((state) => state.mainGameInfoSlice);
+const CategoryCards = ({ gameInfo, Gamecategory }) => {
+  const category = gameInfo.filter((item) => item.category === Gamecategory);
   return (
     <>
       <SectionWrap>
-        <CategoryMenu>🎀리얼월드 인기작🎀</CategoryMenu>
+        <CategoryMenu>{Gamecategory}</CategoryMenu>
+
         <SectionList>
           <Swiper
-            slidesPerView={4}
-            Navigation={true}
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
+              "--swiper-navigation-size": "50px",
+              minWidth: "100px",
+            }}
+            navigation={true}
             modules={[Navigation]}
-            className="mySwiper"
+            slidesPerView={4}
+            className="mySwiper2"
           >
-            {gameInfo.map((content) => {
-              return (
-                <SwiperSlide>
-                  <SectionGap key={content.id}>
-                    <GameImgBox>
-                      <img src={content.gameImg} alt={content.gameTitle} />
-                    </GameImgBox>
-                    <Information>
-                      <h2 className="gameTitle">{content.gameTitle}</h2>
-                      <div>
-                        <p>{content.gamePrice}</p>
-                      </div>
-                    </Information>
-                  </SectionGap>
-                </SwiperSlide>
-              );
-            })}
+            {category.map((item, idx) => (
+              <SwiperSlide key={idx}>
+                <SectionGap key={item.id}>
+                  <GameImgBox>
+                    <img src={item.titleImg} alt={item.gameTitle} />
+                  </GameImgBox>
+                  <Information>
+                    <h2 className="gameTitle">{item.gameTitle}</h2>
+                    <div>
+                      <p>{item.gamePrice}</p>
+                    </div>
+                  </Information>
+                </SectionGap>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </SectionList>
       </SectionWrap>
@@ -48,6 +53,7 @@ const SectionWrap = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   width: 100%;
   max-width: 1140px;
+  min-width: 150px;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
@@ -75,11 +81,10 @@ const GameImgBox = styled.div`
   border-radius: 8px;
 
   img {
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 8px;
     width: 250px;
     height: 168px;
-    width: 100%;
   }
 `;
 const Information = styled.div`

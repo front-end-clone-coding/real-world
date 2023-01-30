@@ -12,7 +12,7 @@ export const __postLogin = createAsyncThunk(
   async ({ user, navigate }, thunkAPI) => {
     try {
       const data = await axiosInstance.post(`user/login`, user);
-      if (data.data.statuscode === 200) {
+      if (data.data.httpStatus === 200) {
         const token = data.headers.get("Authorization");
         localStorage.setItem("token", token);
         navigate("/");
@@ -25,8 +25,8 @@ export const __postLogin = createAsyncThunk(
       const errorObject = error.response.data;
 
       //에러코드 처리
-      if (errorObject.status === 400) {
-        alert(`${errorObject.message}`);
+      if (errorObject.httpStatus === 400) {
+        alert(`${errorObject.msg}`);
       }
 
       return thunkAPI.rejectWithValue(error);
