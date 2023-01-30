@@ -4,6 +4,7 @@ const initialState = {
   bestgameInfo: [],
   FreeGameInfo: [],
   Gamecategory: [],
+  maingameInfo: [],
   GameDetailDescriptionInfo: [],
   GameDetailDescriptionTextInfo: [],
   error: null,
@@ -50,7 +51,13 @@ export const getFreeGameInfo = createAsyncThunk(
     }
   }
 );
-
+//메인 슬라이드 받아오기
+export const getMainGameInfo = createAsyncThunk(
+  "getMainGameInfo",
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get("/games/star");
+      console.log("슬라이더?", data);
 export const GameDetailDescription = createAsyncThunk(
   "GameDetailDescription",
   async (payload, thunkAPI) => {
@@ -138,6 +145,19 @@ export const mainGameInfoSlice = createSlice({
       // catch 된 error 객체를 state.error에 넣습니다.
       state.error = action.payload;
     },
+
+    //메인 슬라이드
+    [getMainGameInfo.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getMainGameInfo.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.maingameInfo = action.payload;
+      console.log("풀필드", state.maingameInfo);
+      console.log("풀필드2", action.payload);
+    },
+    [getMainGameInfo.rejected]: (state, action) => {
+
     //설명
     [GameDetailTextDescription.pending]: (state) => {
       state.isLoading = true;
