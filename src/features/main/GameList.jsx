@@ -46,7 +46,6 @@ const Title1 = styled.div`
 `;
 
 const SliderContainer = styled.div`
-  border: 2px solid black;
   padding: 20px;
   height: 500px;
 `;

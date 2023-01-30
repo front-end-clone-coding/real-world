@@ -48,14 +48,14 @@ const FootContainer = styled.footer`
   padding: 20px 100px 60px 400px;
 
   width: 100%;
-  height: 200px;
+  height: 100%;
 
   display: flex;
 `;
 
 const CompanyContainer = styled.div`
   width: 500px;
-
+  display: block;
   div {
     color: white;
     margin-top: 5px;
