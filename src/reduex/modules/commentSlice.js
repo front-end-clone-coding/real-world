@@ -21,13 +21,13 @@ const config = {
 export const getComments = createAsyncThunk(
   "getComments",
   async (payload, thunkAPI) => {
-    //console.log("겟 페이로드", payload);
+    console.log("겟 페이로드", payload);
     try {
       const data = await axios.get(
         `http://localhost:3001/comments?postId=${payload}`
       ); //로컬용*/
       //const data = await axiosInstance.get(`/detail/comment/${payload}`);
-      // console.log("리듀서 겟 받기", data);
+      console.log("리듀서 겟 받기", data);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -48,7 +48,7 @@ export const addComment = createAsyncThunk(
       //   config
       //);
       // console.log(data);
-      // console.log("코멘트 페이로드", payload);
+      console.log("코멘트 페이로드", payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       //console.log(error);
@@ -60,24 +60,25 @@ export const addComment = createAsyncThunk(
 export const deleteComment = createAsyncThunk(
   "deleteComment",
   async (payload, thunkAPI) => {
-    //console.log("딜리트 페이로드", payload);
+    console.log("딜리트 페이로드", payload);
     try {
-      console.log(payload);
-      const data = await axios.delete(
-        `http://localhost:3001/comments/${payload}`
-      );
+      const data = await axios
+        .delete(`http://localhost:3001/comments/${payload.id}`)
+        .then((response) => {
+          thunkAPI.dispatch(getComments(payload.postId));
+        });
 
       // const data = await axiosInstance.post(
       //   `/detail/comment/${payload.postId}/${payload.commentId}`,
       //   payload,
       //   config
       // );
-      //console.log("딜리트데이터", data);
+      console.log("딜리트데이터", data);
 
-      /*if(Request.status === 200){
-        thurnkAPI.dispatch(getComments())
-      }*/
-      return thunkAPI.fulfillWithValue(data);
+      // if (Request.status === 200) {
+      //   thunkAPI.dispatch(getComments(payload.postId));
+      // }
+      // return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;
       if (errorObject.status === 400) {
@@ -155,22 +156,23 @@ export const commentsSlice = createSlice({
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
     // delete 리듀서
-    [deleteComment.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      // console.log(state.comments);
-      const target = state.comments.findIndex(
-        (comment) => comment.id === action.payload
-      );
-      //console.log("액션페이로드", action.payload);
-      state.comments.splice(target, 1); // state 변화 생김
-    },
+    // [deleteComment.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   console.log("코멘트리스트", state.comments);
+    //   const target = state.comments.findIndex(
+    //     (comment) => comment.id === action.payload
+    //   );
+    //   console.log("코멘트 아이디", action.payload);
+    //   console.log("액션페이로드", action.payload);
+    //   state.comments.splice(target, 1); // state 변화 생김
+    // },
     [deleteComment.pending]: (state) => {
       state.isLoading = true;
     },
-    [deleteComment.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    // [deleteComment.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
 
     // update 리듀서
     [updateCommentDetail.pending]: (state, action) => {
