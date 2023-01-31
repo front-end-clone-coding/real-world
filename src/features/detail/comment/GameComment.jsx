@@ -12,7 +12,7 @@ import {
 const GameComment = () => {
   //별점구현을 위한 state
   const [clicked, setClicked] = useState([false, false, false, false, false]);
-  const Array = [0, 1, 2, 3, 4];
+  // const Array = [0, 1, 2, 3, 4]; 필요없음
 
   const commentInput = useRef();
   const { id } = useParams();
@@ -60,13 +60,13 @@ const GameComment = () => {
           <>
             <form>
               <Stars>
-                {Array.map((star, idx) => {
+                {clicked.map((star, idx) => {
                   return (
                     <FaStar
                       key={idx}
                       size="20"
-                      onClick={() => handleStarClick(star)}
-                      className={clicked[star] && "yellowStar"}
+                      onClick={() => handleStarClick(idx)}
+                      style={{ color: star ? "yellow" : "black" }}
                     />
                   );
                 })}
@@ -103,11 +103,11 @@ const GameComment = () => {
                 <div>날짜</div>
               </UserData>
             </Profil>
+            <div>comment</div>
             <Star>
               <div>star</div>
             </Star>
           </CardWrap>
-          <div>comment</div>
         </CommentCard>
       </CommentContainer>
     </>
