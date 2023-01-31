@@ -15,8 +15,8 @@ export const __signUp = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axiosInstance.post(`/user/signup`, payload);
-      console.log(data);
-      console.log(payload);
+      console.log("가입 넘기는 데이터", data);
+      console.log("가입 페이로드", payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       //에러

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 const GameIntro = () => {
@@ -23,8 +23,6 @@ const GameIntro = () => {
         </div>
       </IntroWrap>
       <GameShoot>
-        {/* <div>스크린샷 들어갈자리</div> */}
-
         {imgLists.map((img) => {
           console.log(img);
           return (
@@ -36,7 +34,6 @@ const GameIntro = () => {
             />
           );
         })}
-
         <div />
       </GameShoot>
       <GameDescContainer>
@@ -59,7 +56,9 @@ const GameIntro = () => {
 };
 
 export default GameIntro;
+
 const IntroBox = styled.div`
+  min-height: 900px;
   margin-top: 20px;
 `;
 const IntroWrap = styled.div`
@@ -70,6 +69,7 @@ const IntroWrap = styled.div`
   }
   span {
     font-size: 15px;
+    word-break: break-all;
     margin: 10px;
   }
 `;
@@ -91,6 +91,7 @@ const GameShoot = styled.div`
 `;
 const DescWrap = styled.div`
   padding: 10px;
+
   div {
     font-size: 20px;
     font-weight: 500;
