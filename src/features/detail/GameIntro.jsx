@@ -9,7 +9,6 @@ const GameIntro = () => {
 
   console.log(GameDetailDescriptionInfo);
   console.log(Array.isArray(GameDetailDescriptionInfo.gameImg));
-  const imgLists = GameDetailDescriptionInfo.gameImg.split(",");
 
   return (
     <IntroBox>
@@ -27,7 +26,7 @@ const GameIntro = () => {
         </div>
       </IntroWrap>
       <GameShoot>
-        {imgLists.map((img) => {
+        {GameDetailDescriptionInfo.gameImg.map((img) => {
           console.log(img);
           return (
             <img

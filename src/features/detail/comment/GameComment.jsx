@@ -28,7 +28,7 @@ const GameComment = () => {
         {comments.map((item, index) => {
           return (
             <CommentCards
-              key={index}
+              key={item.id}
               commentInfo={item}
               postId={item.postId}
               disabledToggle={disabledToggle}
@@ -43,14 +43,12 @@ const GameComment = () => {
 export default GameComment;
 
 const CommentContainer = styled.div`
-  border: 1px solid black;
   margin-top: 20px;
   min-height: 900px;
 
   overflow-y: scroll;
 `;
 const CommentWrap = styled.div`
-  border: 1px solid red;
   padding: 10px;
   div {
     font-size: 20px;

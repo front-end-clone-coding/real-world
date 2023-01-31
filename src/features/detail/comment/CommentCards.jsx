@@ -1,10 +1,12 @@
 import React, { useRef, useSelector, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { FaStar } from "react-icons/fa";
 import {
   deleteComment,
   isDisabledToggle,
 } from "../../../reduex/modules/commentSlice";
+
 const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
   const dispatch = useDispatch();
   const commentsObject = useRef();
@@ -18,7 +20,9 @@ const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
     const result = window.confirm("이 코멘트를 지울까요?");
     if (result) {
       //console.log(comment);
-      return dispatch(deleteComment(commentInfo.id));
+      return dispatch(
+        deleteComment({ id: commentInfo.id, postId: commentInfo.postId })
+      );
     } else {
       return;
     }
@@ -62,52 +66,75 @@ const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
   //   };
 
   return (
-    <div>
-      <CommentCard>
-        <CardWrap>
-          <Profil>
-            <img
-              src="https://realworld.to/images/profile/user-default-img.svg"
-              alt="user"
-            />
-            <UserData>
-              <span>user</span>
-              <div>{commentInfo.commentDay}</div>
-            </UserData>
-          </Profil>
-          <Comment>
-            <div>{commentInfo.comment}</div>
-          </Comment>
+    <CommentCard>
+      <CardWrap>
+        <Profil>
+          <img
+            src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg"
+            alt="pic"
+          />
+          <UserData>
+            <span>user</span>
+            <div>{commentInfo.commentDay}</div>
+          </UserData>
+        </Profil>
+        <Comment>
+          <div>{commentInfo.comment}</div>
+        </Comment>
+        <div>
           <Star>
+            <FaStar size="15" color="#fcc419" />
             <div>{commentInfo.star}</div>
           </Star>
-        </CardWrap>
-        <button onClick={onDeleteHandler} disabled={disabledToggle}>
-          삭제
-        </button>
-      </CommentCard>
-    </div>
+          <button onClick={onDeleteHandler} disabled={disabledToggle}>
+            삭제
+          </button>
+        </div>
+      </CardWrap>
+    </CommentCard>
   );
 };
 
 export default CommentCards;
+
 const CommentCard = styled.div`
-  border: 1px solid blue;
+  background-color: #dfdfdf;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
 `;
 const CardWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  button {
+    background-color: #3b5998;
+    color: white;
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+  }
 `;
 const Profil = styled.div`
-  border: 1px solid black;
   display: flex;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
 `;
 const UserData = styled.div`
-  margin: 10px;
-  border: 1px solid red;
+  margin-left: 10px;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 800;
 `;
 const Star = styled.div`
-  border: 1px solid blue;
+  display: flex;
+  padding: 5px;
 `;
-const Comment = styled.div``;
+const Comment = styled.div`
+  font-size: 15px;
+  font-weight: 700;
+`;
