@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
@@ -8,8 +8,18 @@ const Tab = ({ Categorylist, visible }) => {
   let components;
   if (Categorylist[0] === "추천") {
     components = <BestGameList />;
-  }
+  } //else if (Categorylist[0] === "게임소개") {
+  //   components = <GameIntro />;
+  // }
 
+  // useEffect(() => {
+
+  //   if (Categorylist[0] === "추천") {
+  //     components = <BestGameList />;
+  //   } else if (Categorylist[0] === "게임소개") {
+  //     components = <GameIntro />;
+  //   }
+  // });
   const [currentTab, SetcurrentTab] = useState(components);
   const [currentTabIndex, SetcurrentTabIndex] = useState(0);
 

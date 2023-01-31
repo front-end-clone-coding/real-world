@@ -15,7 +15,7 @@ const GameList = ({ visible }) => {
     dispatch(getBestGameInfo());
     dispatch(getFreeGameInfo());
     dispatch(getMainGameInfo());
-  }, []);
+  }, [dispatch]);
 
   //Tab
   const Categorylist = ["추천", "무료"];

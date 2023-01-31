@@ -35,7 +35,7 @@ const Detail = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [position]);
+  }, [position, visible]);
   return (
     <>
       <Header visible={visible} />
