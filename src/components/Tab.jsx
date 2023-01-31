@@ -43,7 +43,6 @@ const Tab = ({ Categorylist, visible }) => {
     }
   };
 
-  console.log(currentTab);
   return (
     <>
       <TabContainer>

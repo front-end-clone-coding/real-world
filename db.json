@@ -166,6 +166,83 @@
       "comment": "Test",
       "star": 5,
       "id": 9
+    },
+    {
+      "postId": "22",
+      "comment": "안녕",
+      "star": 1,
+      "id": 10
+    },
+    {
+      "postId": "22",
+      "comment": "안녕하세요",
+      "star": 3,
+      "id": 11
+    },
+    {
+      "postId": "22",
+      "comment": "확인용",
+      "star": 0,
+      "id": 12
+    },
+    {
+      "postId": "26",
+      "comment": "안녕하세요",
+      "star": 0,
+      "id": 13
+    },
+    {
+      "postId": "26",
+      "comment": "안녕하세요",
+      "star": 3,
+      "id": 14
+    },
+    {
+      "postId": "26",
+      "comment": "뭐지",
+      "star": 2,
+      "id": 15
+    },
+    {
+      "postId": "20",
+      "comment": "안녕하세요",
+      "star": 3,
+      "id": 16
+    },
+    {
+      "postId": "29",
+      "comment": "Hello",
+      "star": 0,
+      "id": 18
+    },
+    {
+      "postId": "27",
+      "comment": "응",
+      "star": 1,
+      "commentDay": "2023-1-31 ",
+      "id": 25
+    },
+    {
+      "postId": "23",
+      "comment": "???",
+      "star": 2,
+      "commentDay": "2023-1-31 ",
+      "id": 29
+    },
+    {
+      "postId": "23",
+      "comment": "ㅇㅇㅇㅇ",
+      "star": 5,
+      "commentDay": "2023-1-31 ",
+      "id": 30
+    },
+    {
+      "postId": "9",
+      "comment": "hell....",
+      "star": 0,
+      "commentDay": "2023-1-31 ",
+      "spolier": false,
+      "id": 49
     }
   ]
 }

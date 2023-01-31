@@ -8,7 +8,7 @@ import {
   GameDetailDescription,
   GameDetailTextDescription,
 } from "../../reduex/modules/mainGameInfoSlice";
-
+import { getComments } from "../../reduex/modules/commentSlice";
 const SeleteGame = ({ visible }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -17,11 +17,12 @@ const SeleteGame = ({ visible }) => {
   );
 
   //const [currentIndex, setCurrentIndex] = useState("");
-
+  const postId = id;
   useEffect(() => {
     dispatch(GameDetailDescription(id));
     dispatch(GameDetailTextDescription(id));
-  }, [dispatch, id]);
+    dispatch(getComments(postId));
+  }, [dispatch, id, postId]);
 
   // useEffect(() => {
   //   if (isSuccess) {
@@ -30,7 +31,6 @@ const SeleteGame = ({ visible }) => {
   //   }
   // }, [isSuccess, GameDetailDescriptionInfo]);
 
-  console.log(GameDetailDescriptionInfo);
   const Categorylist = ["게임소개", "게임후기"];
 
   return (

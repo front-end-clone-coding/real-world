@@ -23,10 +23,10 @@ export const getComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     //console.log("겟 페이로드", payload);
     try {
-      /*const data = await axios.get(
+      const data = await axios.get(
         `http://localhost:3001/comments?postId=${payload}`
       ); //로컬용*/
-      const data = await axiosInstance.get(`/detail/comment/${payload}`);
+      //const data = await axiosInstance.get(`/detail/comment/${payload}`);
       // console.log("리듀서 겟 받기", data);
 
       return thunkAPI.fulfillWithValue(data.data);
@@ -62,16 +62,21 @@ export const deleteComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     //console.log("딜리트 페이로드", payload);
     try {
-      // const data = await axios.delete(
-      //   `http://localhost:3001/comments/${payload}`
-      // );
-
-      const data = await axiosInstance.post(
-        `/detail/comment/${payload.postId}/${payload.commentId}`,
-        payload,
-        config
+      console.log(payload);
+      const data = await axios.delete(
+        `http://localhost:3001/comments/${payload}`
       );
+
+      // const data = await axiosInstance.post(
+      //   `/detail/comment/${payload.postId}/${payload.commentId}`,
+      //   payload,
+      //   config
+      // );
       //console.log("딜리트데이터", data);
+
+      /*if(Request.status === 200){
+        thurnkAPI.dispatch(getComments())
+      }*/
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;

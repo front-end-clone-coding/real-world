@@ -10,7 +10,6 @@ const DetailGameInfo = () => {
   const dispatch = useDispatch();
   //kit여부에 따라 표시
   let kit = "";
-  console.log(GameDetailDescriptionTextInfo);
   if (GameDetailDescriptionTextInfo.kit) {
     kit = "있음";
   } else {
