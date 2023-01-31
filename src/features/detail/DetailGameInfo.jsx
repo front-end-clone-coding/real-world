@@ -24,7 +24,11 @@ const DetailGameInfo = () => {
           <div className="producTitle">
             {GameDetailDescriptionTextInfo.gameTitle}
           </div>
-          <div className="productSaltePrice">무료</div>
+          <div className="productSaltePrice">
+            {GameDetailDescriptionTextInfo.gamePrice === "무료"
+              ? GameDetailDescriptionTextInfo.gamePrice
+              : GameDetailDescriptionTextInfo.gamePrice + "원"}
+          </div>
         </InfoHeader>
         <ProductCreatorName>
           <ProductImgWrap>

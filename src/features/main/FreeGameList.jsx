@@ -23,7 +23,7 @@ const Free = () => {
                     <p className="gamePrice">{content.gamePrice}</p>
                   </div>
                   <div>
-                    <p>{content.gameDesc}</p>
+                    <p>{content.gameDescShort}</p>
                   </div>
                 </Information>
               </SectionGap>

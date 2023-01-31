@@ -42,7 +42,7 @@ export default function Slider() {
               />
               <>
                 <h2>{card.gameTitle}</h2>
-                <p>{card.story}</p>
+                <p>{card.gameDescShort}</p>
               </>
             </SwiperSlide>
           );

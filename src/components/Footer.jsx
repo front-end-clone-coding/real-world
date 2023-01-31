@@ -18,16 +18,28 @@ const Footer = () => {
         <div>Contact</div>
         <Socialbtn>
           <button>
-            <img src="https://realworld.to/images/twitter_icon.svg" />
+            <img
+              src="https://realworld.to/images/twitter_icon.svg"
+              alt="트위터"
+            />
           </button>
           <button>
-            <img src="https://realworld.to/images/instagram-icon.svg" />
+            <img
+              src="https://realworld.to/images/instagram-icon.svg"
+              alt="인스타"
+            />
           </button>
           <button>
-            <img src="https://realworld.to/images/naver-icon.svg" />
+            <img
+              src="https://realworld.to/images/naver-icon.svg"
+              alt="네이버"
+            />
           </button>
           <button>
-            <img src="https://realworld.to/images/youtube-icon.svg" />
+            <img
+              src="https://realworld.to/images/youtube-icon.svg"
+              alt="유투브"
+            />
           </button>
         </Socialbtn>
         <button>문의하기</button>
@@ -43,12 +55,13 @@ const Footer = () => {
 export default Footer;
 
 const FootContainer = styled.footer`
+  position: relative;
   background-color: #0a111e;
 
   padding: 20px 100px 60px 400px;
 
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   display: flex;
 `;

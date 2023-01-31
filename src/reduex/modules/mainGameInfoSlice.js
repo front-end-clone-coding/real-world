@@ -78,7 +78,7 @@ export const GameDetailDescription = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(`/games/sc/${payload}`);
-      console.log(data);
+      // console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;
@@ -170,8 +170,8 @@ export const mainGameInfoSlice = createSlice({
     [getMainGameInfo.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.maingameInfo = action.payload;
-      console.log("풀필드", state.maingameInfo);
-      console.log("풀필드2", action.payload);
+      // console.log("풀필드", state.maingameInfo);
+      // console.log("풀필드2", action.payload);
     },
     [getMainGameInfo.rejected]: (state, action) => {
       state.isLoading = false;
