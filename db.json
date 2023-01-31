@@ -9,7 +9,6 @@
       "pw": "123456789"
     }
   ],
-
   "user": [
     {
       "userName": "qweqwe",
@@ -24,7 +23,6 @@
       "id": 2
     }
   ],
-
   "freegameInfo": [
     {
       "category": true,
@@ -115,6 +113,59 @@
       "gameTitle": "리얼월드 인기작1",
       "gamePrice": "무료",
       "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "postId": "22",
+      "commentObject": "안녕하세요",
+      "id": 1
+    },
+    {
+      "postId": "22",
+      "commentObject": "안녕하세요",
+      "id": 2
+    },
+    {
+      "postId": "22",
+      "commentObject": "안녕",
+      "id": 3
+    },
+    {
+      "postId": "22",
+      "commentObject": "안녕안녕하세요",
+      "star": 3,
+      "id": 4
+    },
+    {
+      "postId": "22",
+      "comment": "안녕?",
+      "star": 3,
+      "id": 5
+    },
+    {
+      "postId": "22",
+      "comment": "안녕",
+      "star": 3,
+      "id": 6
+    },
+    {
+      "postId": "22",
+      "comment": "왜?",
+      "star": 3,
+      "id": 7
+    },
+    {
+      "postId": "22",
+      "comment": "평점",
+      "star": 2,
+      "id": 8
+    },
+    {
+      "postId": "22",
+      "comment": "Test",
+      "star": 5,
+      "id": 9
     }
   ]
 }

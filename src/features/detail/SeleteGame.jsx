@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -12,22 +12,23 @@ import {
 const SeleteGame = ({ visible }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { GameDetailDescriptionInfo, isSuccess } = useSelector(
+  const { GameDetailDescriptionInfo } = useSelector(
     (state) => state.mainGameInfoSlice
   );
-  const [currentIndex, setCurrentIndex] = useState("");
+
+  //const [currentIndex, setCurrentIndex] = useState("");
 
   useEffect(() => {
     dispatch(GameDetailDescription(id));
     dispatch(GameDetailTextDescription(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
-  useEffect(() => {
-    if (isSuccess) {
-      // GET 되었을때 set
-      setCurrentIndex(GameDetailDescriptionInfo);
-    }
-  }, [isSuccess, dispatch]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     // GET 되었을때 set
+  //     setCurrentIndex(GameDetailDescriptionInfo);
+  //   }
+  // }, [isSuccess, GameDetailDescriptionInfo]);
 
   console.log(GameDetailDescriptionInfo);
   const Categorylist = ["게임소개", "상세정보", "게임후기"];
@@ -36,8 +37,8 @@ const SeleteGame = ({ visible }) => {
     <PageWrap>
       <LeftContainer>
         <GameTitleImg
-          src={currentIndex.titleImg}
-          alt={currentIndex.gameTitle}
+          src={GameDetailDescriptionInfo.titleImg}
+          alt={GameDetailDescriptionInfo.gameTitle}
         />
         <MenuTap>
           <Tab Categorylist={Categorylist} visible={visible} />
@@ -67,21 +68,6 @@ const GameTitleImg = styled.img`
   height: 500px;
 `;
 const MenuTap = styled.div`
-  /* border: 2px solid black; */
-`;
-const GameShoot = styled.div`
-  /* border: 2px solid black; */
-
-  width: 600px;
-  height: 300px;
-`;
-const GameDescContainer = styled.div`
-  /* border: 2px solid black; */
-
-  width: 600px;
-  height: 200px;
-`;
-const GameInfo = styled.div`
   /* border: 2px solid black; */
 `;
 

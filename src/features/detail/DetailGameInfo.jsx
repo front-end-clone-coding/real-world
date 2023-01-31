@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { isHiddenToggle } from "../../reduex/modules/commentSlice";
 const DetailGameInfo = () => {
   const { GameDetailDescriptionTextInfo } = useSelector(
     (state) => state.mainGameInfoSlice
   );
+  const dispatch = useDispatch();
+  //kit여부에 따라 표시
   let kit = "";
   console.log(GameDetailDescriptionTextInfo);
   if (GameDetailDescriptionTextInfo.kit) {
@@ -13,6 +16,7 @@ const DetailGameInfo = () => {
   } else {
     kit = "없음";
   }
+
   return (
     <GameTitleContainer>
       <div className="wrap">
@@ -27,19 +31,23 @@ const DetailGameInfo = () => {
           <div className="productSaltePrice">무료</div>
         </InfoHeader>
         <ProductCreatorName>
-          <ProductImgWrap>
-            <img
-              src="https://cdn.realworld.to/user-files/vho_wev_E90EUtBMvcGRCg/21-03-04-14-22-00_Y_GCjWCcG3s.jpg"
-              alt="리얼월드 로고 이미지"
-            />
-          </ProductImgWrap>
-          <div>{GameDetailDescriptionTextInfo.createdAt}</div>
-          <ProductImgWrap>
-            <img
-              src="https://realworld.to/images/basic_information/Icon_RealworldBadge.svg"
-              alt="리얼월드 로고 이미지"
-            />
-          </ProductImgWrap>
+          {GameDetailDescriptionTextInfo.createdAt && (
+            <>
+              <ProductImgWrap>
+                <img
+                  src="https://cdn.realworld.to/user-files/vho_wev_E90EUtBMvcGRCg/21-03-04-14-22-00_Y_GCjWCcG3s.jpg"
+                  alt="리얼월드 로고 이미지"
+                />
+              </ProductImgWrap>
+              <div>{GameDetailDescriptionTextInfo.createdAt}</div>
+              <ProductImgWrap>
+                <img
+                  src="https://realworld.to/images/basic_information/Icon_RealworldBadge.svg"
+                  alt="리얼월드 로고 이미지"
+                />
+              </ProductImgWrap>
+            </>
+          )}
         </ProductCreatorName>
         <Divider />
         <ProductOptions>
@@ -80,7 +88,9 @@ const DetailGameInfo = () => {
             <div>{kit}</div>
           </ItemWrap>
         </ProductOptions>
-        <Button>댓글 달기</Button>
+        <Button onClick={() => dispatch(isHiddenToggle(false))}>
+          댓글 달기
+        </Button>
       </div>
     </GameTitleContainer>
   );

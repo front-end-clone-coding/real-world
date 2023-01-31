@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+
 const GameIntro = () => {
   const { GameDetailDescriptionInfo } = useSelector(
     (state) => state.mainGameInfoSlice
   );
-  const imgLists = GameDetailDescriptionInfo.gameImg.split(",");
+
+  console.log(GameDetailDescriptionInfo);
   console.log(Array.isArray(GameDetailDescriptionInfo.gameImg));
+  const imgLists = GameDetailDescriptionInfo.gameImg.split(",");
+
   return (
     <IntroBox>
       <IntroWrap>
