@@ -10,7 +10,11 @@ const GlobalStyle = createGlobalStyle`
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
+<<<<<<< HEAD
     //color: #000000
+=======
+    /* color: #000000 */
+>>>>>>> dev
 
   }
 

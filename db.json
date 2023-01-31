@@ -237,12 +237,20 @@
       "id": 30
     },
     {
-      "postId": "9",
-      "comment": "hell....",
+      "postId": "28",
+      "comment": "삭제2",
       "star": 0,
       "commentDay": "2023-1-31 ",
       "spolier": false,
-      "id": 49
+      "id": 32
+    },
+    {
+      "postId": "28",
+      "comment": "안녕",
+      "star": 3,
+      "commentDay": "2023-1-31 ",
+      "spolier": true,
+      "id": 33
     }
   ]
 }

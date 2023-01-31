@@ -14,6 +14,7 @@ const GameComment = () => {
     <>
       <CommentContainer>
         {hiddenToggle || <CommentInput />}
+
         <CommentWrap>
           <div>게임 후기</div>
           <div
