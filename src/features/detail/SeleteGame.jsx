@@ -31,7 +31,7 @@ const SeleteGame = ({ visible }) => {
   // }, [isSuccess, GameDetailDescriptionInfo]);
 
   console.log(GameDetailDescriptionInfo);
-  const Categorylist = ["게임소개", "상세정보", "게임후기"];
+  const Categorylist = ["게임소개", "게임후기"];
 
   return (
     <PageWrap>
@@ -55,8 +55,8 @@ export default SeleteGame;
 
 const PageWrap = styled.div`
   margin-top: 100px;
-  padding-left: auto;
-  padding-right: auto;
+  padding-left: 500px;
+  padding-right: 500px;
   display: flex;
   justify-content: center;
 `;

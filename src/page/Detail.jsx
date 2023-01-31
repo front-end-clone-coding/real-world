@@ -2,6 +2,7 @@ import React from "react";
 import SeleteGame from "../features/detail/SeleteGame";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
+import Footer from "../components/Footer";
 const Detail = () => {
   const [position, setPosition] = useState({
     headerPosition: window.pageYOffset,
@@ -39,7 +40,7 @@ const Detail = () => {
     <>
       <Header visible={visible} />
       <SeleteGame visible={visible} />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
