@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
@@ -74,7 +74,7 @@ const LogImg = styled.img`
   height: 36px;
 `;
 
-const navbarCollapse = styled.div``;
+// const navbarCollapse = styled.div``;
 const NavbarNav = styled.ul`
   display: flex;
 `;
