@@ -1,14 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import CommentCards from "./CommentCards";
 import CommentInput from "./CommentInput";
-
+import { useParams } from "react-router-dom";
+import { getComments } from "../../../reduex/modules/commentSlice";
 const GameComment = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const postId = id;
+  useEffect(() => {
+    dispatch(getComments(postId));
+  }, [dispatch, postId]);
+
   //댓글 가져오기
   const { comments, hiddenToggle, disabledToggle } = useSelector(
     (state) => state.commentSlice
   );
+
+  // console.log("코멘트폼 파람값?", id);
 
   return (
     <>
@@ -25,12 +35,11 @@ const GameComment = () => {
             }}
           ></div>
         </CommentWrap>
-        {comments.map((item, index) => {
+        {comments.map((item) => {
           return (
             <CommentCards
-              key={index}
+              key={item.id}
               commentInfo={item}
-              postId={item.postId}
               disabledToggle={disabledToggle}
             />
           );

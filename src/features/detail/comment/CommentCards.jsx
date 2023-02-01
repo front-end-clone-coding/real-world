@@ -4,12 +4,16 @@ import { useDispatch } from "react-redux";
 import {
   deleteComment,
   isDisabledToggle,
+  updateCommentDetail,
 } from "../../../reduex/modules/commentSlice";
-const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
+const CommentCards = ({ commentInfo, disabledToggle }) => {
   const dispatch = useDispatch();
-  const commentsObject = useRef();
+  const [spoiler, Setspoiler] = useState(commentInfo.spolier);
+  // const commentRef = useRef();
+  console.log(spoiler);
+  // const commentsObject = useRef();
 
-  //편집모드
+  // //편집모드
   const [commentUpdate, setCommetUpdate] = useState(commentInfo.comment);
   const [editMode, setEditMode] = useState(false);
 
@@ -17,28 +21,30 @@ const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
   const onDeleteHandler = () => {
     const result = window.confirm("이 코멘트를 지울까요?");
     if (result) {
-      //console.log(comment);
-      return dispatch(deleteComment(commentInfo.id));
+      console.log(commentInfo.id);
+      return dispatch(
+        deleteComment({ id: commentInfo.id, postId: commentInfo.postId })
+      );
     } else {
       return;
     }
   };
-
+  console.log();
   //수정기능
   //수정버튼 눌렀을시
-  const onChangeEditMode = () => {
-    // //토큰이 없을 경우 실행 못하도록
-    // if (!token) return alert("로그인을 해주세요");
-    //편집모드
-    setEditMode(true);
-    //수정을 했을 시 다른 버튼들 비활성화
-    dispatch(isDisabledToggle(true));
-  };
-  //수정시 빈칸입력
-  const onChangeHandler = (event) => {
-    setCommetUpdate(event.target.value);
-    // console.log("코멘트 입력 값", comment);
-  };
+  // const onChangeEditMode = () => {
+  //   // //토큰이 없을 경우 실행 못하도록
+  //   // if (!token) return alert("로그인을 해주세요");
+  //   //편집모드
+  //   setEditMode(true);
+  //   //수정을 했을 시 다른 버튼들 비활성화
+  //   dispatch(isDisabledToggle(true));
+  // };
+  // //수정시 빈칸입력
+  // const onChangeHandler = (event) => {
+  //   setCommetUpdate(event.target.value);
+  //   // console.log("코멘트 입력 값", comment);
+  // };
 
   //   //수정버튼 클릭시
   //   const onEditButtonHandler = () => {
@@ -60,7 +66,35 @@ const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
   //     setEditMode(false);
   //     dispatch(isDisabledToggle(false));
   //   };
-
+  const onHendlerSopiler = () => {
+    Setspoiler(false);
+  };
+  const onChangeEditMode = () => {
+    setEditMode(true);
+    //수정을 했을 시 다른 버튼들 비활성화
+    dispatch(isDisabledToggle(true));
+  };
+  const onChangeHandler = (event) => {
+    setCommetUpdate(event.target.value);
+  };
+  const onEditButtonHandler = () => {
+    if (commentUpdate.trim() === "") {
+      return alert("입력된 내용이 없습니다.");
+    }
+    const updateComment = {
+      postId: commentInfo.postId,
+      comment: commentUpdate,
+      id: commentInfo.id,
+      star: commentInfo.star,
+    };
+    dispatch(
+      updateCommentDetail({
+        updateComment,
+      })
+    );
+    setEditMode(false);
+    dispatch(isDisabledToggle(false));
+  };
   return (
     <div>
       <CommentCard>
@@ -70,21 +104,47 @@ const CommentCards = ({ commentInfo, postId, disabledToggle }) => {
               src="https://realworld.to/images/profile/user-default-img.svg"
               alt="user"
             />
+
             <UserData>
               <span>user</span>
               <div>{commentInfo.commentDay}</div>
             </UserData>
           </Profil>
-          <Comment>
-            <div>{commentInfo.comment}</div>
-          </Comment>
-          <Star>
-            <div>{commentInfo.star}</div>
-          </Star>
+          {spoiler ? (
+            <>
+              <div onClick={onHendlerSopiler}>스포일러입니다</div>
+            </>
+          ) : (
+            <>
+              {editMode ? (
+                <>
+                  <input
+                    type="text"
+                    value={commentUpdate}
+                    onChange={onChangeHandler}
+                  ></input>
+                  <button onClick={onEditButtonHandler}>수정완료</button>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Comment>
+                    <div>{commentInfo.comment}</div>
+                  </Comment>
+                  <Star>
+                    <div>{commentInfo.star}</div>
+                  </Star>
+                  <button onClick={onDeleteHandler} disabled={disabledToggle}>
+                    삭제
+                  </button>
+                  <button onClick={onChangeEditMode} disabled={disabledToggle}>
+                    수정
+                  </button>
+                </>
+              )}
+            </>
+          )}
         </CardWrap>
-        <button onClick={onDeleteHandler} disabled={disabledToggle}>
-          삭제
-        </button>
       </CommentCard>
     </div>
   );

@@ -4,10 +4,6 @@ import axios from "axios"; // axios import 합니다.
 
 const initialState = {
   comments: [],
-  comment: {
-    postId: 0,
-    comment: "",
-  },
   disabledToggle: false,
   hiddenToggle: true,
   isLoading: false,
@@ -63,9 +59,11 @@ export const deleteComment = createAsyncThunk(
     //console.log("딜리트 페이로드", payload);
     try {
       console.log(payload);
-      const data = await axios.delete(
-        `http://localhost:3001/comments/${payload}`
-      );
+      const data = await axios
+        .delete(`http://localhost:3001/comments/${payload.id}`)
+        .then((response) => {
+          thunkAPI.dispatch(getComments(payload.postId));
+        });
 
       // const data = await axiosInstance.post(
       //   `/detail/comment/${payload.postId}/${payload.commentId}`,
@@ -74,10 +72,12 @@ export const deleteComment = createAsyncThunk(
       // );
       //console.log("딜리트데이터", data);
 
-      /*if(Request.status === 200){
-        thurnkAPI.dispatch(getComments())
-      }*/
-      return thunkAPI.fulfillWithValue(data);
+      // if (data.request.status === 200) {
+      //   console.log("실행?");
+      //   thunkAPI.dispatch(getComments());
+      // }
+      // console.log(data.request.status);
+      // return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;
       if (errorObject.status === 400) {
@@ -93,16 +93,17 @@ export const updateCommentDetail = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const updateComment = payload.updateComment;
-      // await axios.patch(
-      //   `http://localhost:3001/comments/${updateComment.id}`,
-      //   updateComment
-      // );
-      //console.log(payload);
-      await axiosInstance.patch(
-        `/detail/comment/${updateComment.postId}/${updateComment.commentId}`,
-        updateComment,
-        config
+      console.log(updateComment.id);
+      await axios.patch(
+        `http://localhost:3001/comments/${updateComment.id}`,
+        updateComment
       );
+      console.log(payload);
+      // await axiosInstance.patch(
+      //   `/detail/comment/${updateComment.postId}/${updateComment.commentId}`,
+      //   updateComment,
+      //   config
+      // );
       return thunkAPI.fulfillWithValue(updateComment);
     } catch (error) {
       const errorObject = error.response.data;
@@ -154,45 +155,45 @@ export const commentsSlice = createSlice({
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
-    // delete 리듀서
-    [deleteComment.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      // console.log(state.comments);
-      const target = state.comments.findIndex(
-        (comment) => comment.id === action.payload
-      );
-      //console.log("액션페이로드", action.payload);
-      state.comments.splice(target, 1); // state 변화 생김
-    },
-    [deleteComment.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [deleteComment.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
 
+    // delete 리듀서
+    // [deleteComment.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   console.log(action.payload);
+    //   console.log(state.comments);
+    //   const target = state.comments.findIndex(
+    //     (comment) => comment.id === action.payload
+    //   );
+    //   state.comments.splice(target, 1);
+    // },
+    // [deleteComment.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [deleteComment.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
     // update 리듀서
     [updateCommentDetail.pending]: (state, action) => {
       state.isLoading = true;
     },
     [updateCommentDetail.fulfilled]: (state, action) => {
       state.isLoading = false;
-      //console.log(action.payload);
-      //console.log(state.comments);
-      // state.comments = [...state.comments].map((comment) => {
-      //   if (comment.commentId === action.payload.commentId) {
-      //     const newComment = comment;
-      //     newComment.comment = action.payload.comment;
-      //     return newComment;
-      //   }
-      //   return comment;
-      // });
-      const target = state.comments.findIndex(
-        (comment) => comment.commentId === action.payload.commentId
-      );
-      //console.log(target);
-      state.comments.splice(target, 1, action.payload);
+      console.log(action.payload);
+      console.log(state.comments);
+      state.comments = [...state.comments].map((comment) => {
+        if (comment.id === action.payload.id) {
+          const newComment = comment;
+          newComment.comment = action.payload.comment;
+          return newComment;
+        }
+        return comment;
+      });
+      // const target = state.comments.findIndex(
+      //   (comment) => comment.commentId === action.payload.commentId
+      // );
+      // //console.log(target);
+      // state.comments.splice(target, 1, action.payload);
     },
     [updateCommentDetail.rejected]: (state, action) => {
       state.isLoading = false;

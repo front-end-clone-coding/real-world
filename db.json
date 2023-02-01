@@ -211,23 +211,9 @@
     },
     {
       "postId": "29",
-      "comment": "Hello",
+      "comment": "괜찮아요",
       "star": 0,
       "id": 18
-    },
-    {
-      "postId": "27",
-      "comment": "응",
-      "star": 1,
-      "commentDay": "2023-1-31 ",
-      "id": 25
-    },
-    {
-      "postId": "23",
-      "comment": "???",
-      "star": 2,
-      "commentDay": "2023-1-31 ",
-      "id": 29
     },
     {
       "postId": "23",
@@ -237,20 +223,44 @@
       "id": 30
     },
     {
-      "postId": "28",
-      "comment": "삭제2",
+      "postId": "1",
+      "comment": "스포일러",
       "star": 0,
-      "commentDay": "2023-1-31 ",
-      "spolier": false,
-      "id": 32
+      "commentDay": "2023-2-1 ",
+      "spolier": true,
+      "id": 31
     },
     {
-      "postId": "28",
-      "comment": "안녕",
-      "star": 3,
-      "commentDay": "2023-1-31 ",
+      "postId": "1",
+      "comment": "제발",
+      "star": 4,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 34
+    },
+    {
+      "postId": "1",
+      "comment": "그렇지",
+      "star": 4,
+      "commentDay": "2023-2-1 ",
       "spolier": true,
-      "id": 33
+      "id": 37
+    },
+    {
+      "postId": "1",
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ",
+      "star": 5,
+      "commentDay": "2023-2-1 ",
+      "spolier": true,
+      "id": 38
+    },
+    {
+      "postId": "29",
+      "comment": "안녕하세요",
+      "star": 5,
+      "commentDay": "2023-2-1 ",
+      "spolier": true,
+      "id": 39
     }
   ]
 }

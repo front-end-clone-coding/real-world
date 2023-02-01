@@ -66,6 +66,7 @@ const CommentInput = () => {
         commentDay: commentDay,
         spolier: spolier,
       })
+      // addComment([commentDay, star, postId, commentObject, spolier])
     );
     dispatch(isHiddenToggle(true));
   };
