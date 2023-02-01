@@ -210,12 +210,6 @@
       "id": 16
     },
     {
-      "postId": "29",
-      "comment": "괜찮아요",
-      "star": 0,
-      "id": 18
-    },
-    {
       "postId": "23",
       "comment": "ㅇㅇㅇㅇ",
       "star": 5,
@@ -244,6 +238,30 @@
       "star": 4,
       "commentDay": "2023-2-1 ",
       "spolier": true,
+      "id": 33
+    },
+    {
+      "postId": "5",
+      "comment": "22222",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 35
+    },
+    {
+      "postId": "5",
+      "comment": "333333",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 36
+    },
+    {
+      "postId": "5",
+      "comment": "444444",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
       "id": 37
     },
     {
@@ -255,12 +273,44 @@
       "id": 38
     },
     {
+      "postId": "1",
+      "comment": "asdasdasdasdasdasd",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 40
+    },
+    {
+      "postId": "3",
+      "comment": "asdasdasd",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 42
+    },
+    {
+      "postId": "3",
+      "comment": "asdasdasdasdasd",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 43
+    },
+    {
+      "postId": "3",
+      "comment": "asdasdasdasdasd",
+      "star": 0,
+      "commentDay": "2023-2-1 ",
+      "spolier": false,
+      "id": 44
+    },
+    {
       "postId": "29",
-      "comment": "안녕하세요",
-      "star": 5,
+      "comment": "할 수 있나요?",
+      "star": 3,
       "commentDay": "2023-2-1 ",
       "spolier": true,
-      "id": 39
+      "id": 45
     }
   ]
 }

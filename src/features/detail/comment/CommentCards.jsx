@@ -1,11 +1,13 @@
 import React, { useRef, useSelector, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { FaStar } from "react-icons/fa";
 import {
   deleteComment,
   isDisabledToggle,
   updateCommentDetail,
 } from "../../../reduex/modules/commentSlice";
+
 const CommentCards = ({ commentInfo, disabledToggle }) => {
   const dispatch = useDispatch();
   const [spoiler, Setspoiler] = useState(commentInfo.spolier);
@@ -21,7 +23,7 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
   const onDeleteHandler = () => {
     const result = window.confirm("이 코멘트를 지울까요?");
     if (result) {
-      console.log(commentInfo.id);
+      //console.log(comment);
       return dispatch(
         deleteComment({ id: commentInfo.id, postId: commentInfo.postId })
       );
@@ -96,15 +98,14 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
     dispatch(isDisabledToggle(false));
   };
   return (
-    <div>
+    <>
       <CommentCard>
         <CardWrap>
           <Profil>
             <img
-              src="https://realworld.to/images/profile/user-default-img.svg"
-              alt="user"
+              src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg"
+              alt="pic"
             />
-
             <UserData>
               <span>user</span>
               <div>{commentInfo.commentDay}</div>
@@ -112,7 +113,9 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
           </Profil>
           {spoiler ? (
             <>
-              <div onClick={onHendlerSopiler}>스포일러입니다</div>
+              <Comment marginRight="40%" pointer="pointer">
+                <div onClick={onHendlerSopiler}>스포일러입니다</div>
+              </Comment>
             </>
           ) : (
             <>
@@ -122,52 +125,90 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
                     type="text"
                     value={commentUpdate}
                     onChange={onChangeHandler}
+                    style={{
+                      width: "200px",
+                      padding: "10px 0",
+                      borderRadius: "5px",
+                    }}
                   ></input>
                   <button onClick={onEditButtonHandler}>수정완료</button>
                 </>
               ) : (
                 <>
-                  {" "}
                   <Comment>
                     <div>{commentInfo.comment}</div>
                   </Comment>
-                  <Star>
-                    <div>{commentInfo.star}</div>
-                  </Star>
-                  <button onClick={onDeleteHandler} disabled={disabledToggle}>
-                    삭제
-                  </button>
-                  <button onClick={onChangeEditMode} disabled={disabledToggle}>
-                    수정
-                  </button>
+                  <div>
+                    <Star>
+                      <FaStar size="15" color="#fcc419" />
+                      <div>{commentInfo.star}</div>
+                    </Star>
+                    <button
+                      onClick={onDeleteHandler}
+                      disabled={disabledToggle}
+                      style={{ margin: "5px" }}
+                    >
+                      삭제
+                    </button>
+                    <button
+                      onClick={onChangeEditMode}
+                      disabled={disabledToggle}
+                    >
+                      수정
+                    </button>
+                  </div>
                 </>
               )}
             </>
           )}
         </CardWrap>
       </CommentCard>
-    </div>
+    </>
   );
 };
 
 export default CommentCards;
+
 const CommentCard = styled.div`
-  border: 1px solid blue;
+  background-color: #dfdfdf;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
 `;
 const CardWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  button {
+    background-color: #3b5998;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+  }
 `;
 const Profil = styled.div`
-  border: 1px solid black;
   display: flex;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
 `;
 const UserData = styled.div`
-  margin: 10px;
-  border: 1px solid red;
+  margin-left: 10px;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 800;
 `;
 const Star = styled.div`
-  border: 1px solid blue;
+  display: flex;
+  padding: 5px;
 `;
-const Comment = styled.div``;
+const Comment = styled.div`
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: ${(props) => props.marginRight};
+  cursor: ${(props) => props.pointer};
+`;

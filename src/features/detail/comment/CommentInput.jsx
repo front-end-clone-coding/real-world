@@ -75,8 +75,7 @@ const CommentInput = () => {
     <div>
       <form>
         <Stars>
-          <input type="checkbox" onChange={onSpoilerCheckHander} />
-          <label>스포일러 여부</label>
+          <>별점</>
           {clicked.map((star, idx) => {
             return (
               <FaStar
@@ -87,20 +86,62 @@ const CommentInput = () => {
               />
             );
           })}
+          <>
+            <input type="checkbox" onChange={onSpoilerCheckHander} />
+            <label>스포일러 여부</label>
+          </>
         </Stars>
-        <input
-          type="text"
-          ref={commentInput}
-          placeholder="코멘트를 입력하세요."
-        ></input>
-        <button onClick={sendComment}>등록</button>
+        <Inputbox>
+          <input
+            type="text"
+            ref={commentInput}
+            placeholder="코멘트를 입력하세요."
+          ></input>
+          <button onClick={sendComment}>등록</button>
+        </Inputbox>
       </form>
     </div>
   );
 };
 
 export default CommentInput;
+
 const Stars = styled.div`
+  font-size: 15px;
+  font-weight: 700;
+
   display: flex;
-  padding-top: 5px;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 10px;
+  input {
+    margin: 5px;
+  }
+  label {
+    font-size: 15px;
+    font-weight: 700;
+  }
+`;
+const Inputbox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  padding-right: 10px;
+
+  input {
+    width: 500px;
+    height: 50px;
+    border: 2px solid #3b5998;
+    border-radius: 10px;
+  }
+
+  button {
+    background-color: #3b5998;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
 `;

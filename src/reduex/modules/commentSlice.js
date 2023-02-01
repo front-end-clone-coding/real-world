@@ -17,13 +17,13 @@ const config = {
 export const getComments = createAsyncThunk(
   "getComments",
   async (payload, thunkAPI) => {
-    //console.log("겟 페이로드", payload);
+    console.log("겟 페이로드", payload);
     try {
       const data = await axios.get(
         `http://localhost:3001/comments?postId=${payload}`
       ); //로컬용*/
       //const data = await axiosInstance.get(`/detail/comment/${payload}`);
-      // console.log("리듀서 겟 받기", data);
+      console.log("리듀서 겟 받기", data);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -44,7 +44,7 @@ export const addComment = createAsyncThunk(
       //   config
       //);
       // console.log(data);
-      // console.log("코멘트 페이로드", payload);
+      console.log("코멘트 페이로드", payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       //console.log(error);
@@ -56,9 +56,8 @@ export const addComment = createAsyncThunk(
 export const deleteComment = createAsyncThunk(
   "deleteComment",
   async (payload, thunkAPI) => {
-    //console.log("딜리트 페이로드", payload);
+    console.log("딜리트 페이로드", payload);
     try {
-      console.log(payload);
       const data = await axios
         .delete(`http://localhost:3001/comments/${payload.id}`)
         .then((response) => {
@@ -70,8 +69,7 @@ export const deleteComment = createAsyncThunk(
       //   payload,
       //   config
       // );
-      //console.log("딜리트데이터", data);
-
+      console.log("딜리트데이터", data);
       // if (data.request.status === 200) {
       //   console.log("실행?");
       //   thunkAPI.dispatch(getComments());
@@ -155,6 +153,25 @@ export const commentsSlice = createSlice({
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
+
+    // delete 리듀서
+    // [deleteComment.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   console.log("코멘트리스트", state.comments);
+    //   const target = state.comments.findIndex(
+    //     (comment) => comment.id === action.payload
+    //   );
+    //   console.log("코멘트 아이디", action.payload);
+    //   console.log("액션페이로드", action.payload);
+    //   state.comments.splice(target, 1); // state 변화 생김
+    // },
+    [deleteComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    // [deleteComment.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
 
     // delete 리듀서
     // [deleteComment.fulfilled]: (state, action) => {
