@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
+import { BiTimeFive } from "react-icons/bi";
+import { TbPuzzle } from "react-icons/tb";
+import { AiOutlineStar } from "react-icons/ai";
+import { FaRegMap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { isHiddenToggle } from "../../reduex/modules/commentSlice";
 const DetailGameInfo = () => {
@@ -65,37 +69,25 @@ const DetailGameInfo = () => {
         <ProductOptions>
           <ItemWrap>
             <ProductImgWrap>
-              <img
-                src="https://realworld.to/images/basic_information/Icon_Star_Outlined_Gray.svg"
-                alt="별"
-              />
+              <AiOutlineStar />
             </ProductImgWrap>
             <div>{GameDetailDescriptionTextInfo.star}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
-              <img
-                src="https://realworld.to/images/basic_information/Icon_Puzzle_Outlined_Gray.svg"
-                alt="퍼즐조각"
-              />
+              <TbPuzzle />
             </ProductImgWrap>
             <div>{GameDetailDescriptionTextInfo.difficulty}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
-              <img
-                src="https://realworld.to/images/basic_information/Icon_Clock_Outlined_Gray.svg"
-                alt="시계"
-              />
+              <BiTimeFive />
             </ProductImgWrap>
             <div>{GameDetailDescriptionTextInfo.playTime}</div>
           </ItemWrap>
           <ItemWrap>
             <ProductImgWrap>
-              <img
-                src="https://realworld.to/images/details/Icon_Kit_Outlined_LightGray.svg"
-                alt="별"
-              />
+              <FaRegMap />
             </ProductImgWrap>
             <div>{kit}</div>
           </ItemWrap>

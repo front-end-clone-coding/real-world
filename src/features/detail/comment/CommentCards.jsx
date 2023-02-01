@@ -112,6 +112,12 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
               <div>{commentInfo.dates}</div>
             </UserData>
           </Profil>
+          <Star>
+            <FaStar size="15" color="#fcc419" />
+            <div>{commentInfo.stars}</div>
+          </Star>
+        </CardWrap>
+        <CommentWrap>
           {spoiler ? (
             <>
               <Comment marginRight="40%" pointer="pointer">
@@ -140,10 +146,6 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
                     <div>{commentInfo.comment}</div>
                   </Comment>
                   <div>
-                    <Star>
-                      <FaStar size="15" color="#fcc419" />
-                      <div>{commentInfo.stars}</div>
-                    </Star>
                     <button
                       onClick={onDeleteHandler}
                       disabled={disabledToggle}
@@ -162,7 +164,7 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
               )}
             </>
           )}
-        </CardWrap>
+        </CommentWrap>
       </CommentCard>
     </>
   );
@@ -180,16 +182,10 @@ const CardWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  button {
-    background-color: #3b5998;
-    color: white;
-    width: 60px;
-    height: 25px;
-    border-radius: 10px;
-  }
 `;
 const Profil = styled.div`
   display: flex;
+  margin-bottom: 20px;
   img {
     height: 50px;
     width: 50px;
@@ -212,4 +208,15 @@ const Comment = styled.div`
   font-weight: 700;
   margin-right: ${(props) => props.marginRight};
   cursor: ${(props) => props.pointer};
+`;
+const CommentWrap = styled.div`
+  button {
+    position: relative;
+    left: 430px;
+    background-color: #3b5998;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 10px;
+  }
 `;
