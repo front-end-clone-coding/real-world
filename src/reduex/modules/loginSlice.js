@@ -28,17 +28,13 @@ export const __postLogin = createAsyncThunk(
       if (errorObject.httpStatus === 400) {
         alert(`${errorObject.msg}`);
       }
-
-     
     }
   }
 );
 export const loginSlice = createSlice({
   name: "userLogin",
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: {
     //로그인
     [__postLogin.pending]: (state) => {
@@ -47,7 +43,7 @@ export const loginSlice = createSlice({
     [__postLogin.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.loginCheck = true;
-      window.localStorage("isLogin", state.loginCheck);
+      // window.localStorage("isLogin", state.loginCheck);
     },
     [__postLogin.rejected]: (state, action) => {
       state.isLoading = false;

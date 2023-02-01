@@ -23,7 +23,7 @@ export const getComments = createAsyncThunk(
       //   `http://localhost:3001/comments?gameId=${payload}`
       // ); //로컬용*/
       const data = await axiosInstance.get(`/comments/${payload}`);
-      //console.log(data.data);
+      console.log(data.data);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -74,7 +74,7 @@ export const deleteComment = createAsyncThunk(
         .then((response) => {
           thunkAPI.dispatch(getComments(payload.gameId));
         });
-     // console.log("딜리트데이터", data);
+      // console.log("딜리트데이터", data);
       // if (data.request.status === 200) {
       //   console.log("실행?");
       //   thunkAPI.dispatch(getComments());
@@ -156,14 +156,17 @@ export const commentsSlice = createSlice({
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
     // post 보내는 리듀서
-    [addComment.fulfilled]: (state, action) => {
-      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.comments.push(action.payload);
-    },
-    [addComment.rejected]: (state, action) => {
-      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
-    },
+    // [addComment.pending]: (state) => {
+    //   state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+    // },
+    // [addComment.fulfilled]: (state, action) => {
+    //   state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+    //   state.comments.push(action.payload);
+    // },
+    // [addComment.rejected]: (state, action) => {
+    //   state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
+    //   state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    // },
 
     // delete 리듀서
     // [deleteComment.fulfilled]: (state, action) => {

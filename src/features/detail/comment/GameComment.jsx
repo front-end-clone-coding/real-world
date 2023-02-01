@@ -18,6 +18,8 @@ const GameComment = () => {
     (state) => state.commentSlice
   );
 
+  const check = useSelector((state) => state.commentSlice);
+  console.log(check);
   // console.log("코멘트폼 파람값?", id);
 
   return (
