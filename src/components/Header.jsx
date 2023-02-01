@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Header = ({ visible }) => {
+  const dispatch = useDispatch;
   const navigate = useNavigate();
-  const { loginCheck } = useSelector((state) => state.loginSlice);
+  const token = localStorage.getItem("token");
+
+  const logOut = () => {
+    alert("정상 로그아웃 되었습니다.");
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <>
       <Nav move={visible.headerVisible ? "white" : "transparent"}>
@@ -25,10 +32,10 @@ const Header = ({ visible }) => {
           </div>
           <div>
             <NavbarNav>
-              {loginCheck ? (
+              {token ? (
                 <>
                   <NavItem onClick={() => navigate("/")}>게임 목록</NavItem>
-                  <NavItem onClick={() => navigate("/login")}>로그아웃</NavItem>
+                  <NavItem onClick={logOut}>로그아웃</NavItem>
                 </>
               ) : (
                 <>

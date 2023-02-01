@@ -43,14 +43,14 @@ export const addComment = createAsyncThunk(
         isSpoil: payload.isSpoil,
       };
       //const data = await axios.post("http://localhost:3001/comments", payload); //로컬용
-      const data = await axiosInstance.post(
-        `/comments/${payload.gameId}`,
-        commentInfo,
-        config
-      );
+      const data = await axiosInstance
+        .post(`/comments/${payload.gameId}`, commentInfo, config)
+        .then((response) => {
+          thunkAPI.dispatch(getComments(payload.gameId));
+        });
       // console.log(data);
-      console.log("코멘트 페이로드", payload);
-      return thunkAPI.fulfillWithValue(data.data);
+      // console.log("코멘트 페이로드", payload);
+      // return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       //console.log(error);
       return thunkAPI.rejectWithValue(error);
