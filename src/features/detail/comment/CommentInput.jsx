@@ -19,7 +19,7 @@ const CommentInput = () => {
 
   //comment 등록시 필요
   const { id } = useParams();
-  const postId = id;
+  const gameId = id;
 
   //const todaydate = date.toISOString();
   //console.log(todaydate);
@@ -54,17 +54,12 @@ const CommentInput = () => {
       return alert("내용을 입력하세요.");
     }
     const star = clicked.filter(Boolean).length;
-    const date = new Date();
-    const commentDay = `${date.getFullYear()}-${
-      date.getMonth() + 1
-    }-${date.getDate()} `;
     dispatch(
       addComment({
-        postId: postId,
+        gameId: gameId,
         comment: commentObject,
-        star: star,
-        commentDay: commentDay,
-        spolier: spolier,
+        stars: star,
+        isSpoil: spolier,
       })
       // addComment([commentDay, star, postId, commentObject, spolier])
     );

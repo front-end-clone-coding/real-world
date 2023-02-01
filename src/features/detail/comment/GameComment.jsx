@@ -8,10 +8,10 @@ import { getComments } from "../../../reduex/modules/commentSlice";
 const GameComment = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const postId = id;
+  const gameId = id;
   useEffect(() => {
-    dispatch(getComments(postId));
-  }, [dispatch, postId]);
+    dispatch(getComments(gameId));
+  }, [dispatch, gameId]);
 
   //댓글 가져오기
   const { comments, hiddenToggle, disabledToggle } = useSelector(

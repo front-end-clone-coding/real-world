@@ -19,11 +19,11 @@ export const getComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("겟 페이로드", payload);
     try {
-      const data = await axios.get(
-        `http://localhost:3001/comments?postId=${payload}`
-      ); //로컬용*/
-      //const data = await axiosInstance.get(`/detail/comment/${payload}`);
-      console.log("리듀서 겟 받기", data);
+      // const data = await axios.get(
+      //   `http://localhost:3001/comments?gameId=${payload}`
+      // ); //로컬용*/
+      const data = await axiosInstance.get(`/comments/${payload}`);
+      console.log(data.data);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -37,12 +37,17 @@ export const addComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     //console.log("에드 페이로드", payload);
     try {
-      const data = await axios.post("http://localhost:3001/comments", payload); //로컬용
-      // const data = await axiosInstance.post(
-      //   `/detail/comment/${payload.postId}`,
-      //   payload,
-      //   config
-      //);
+      const commentInfo = {
+        comment: payload.comment,
+        stars: payload.stars,
+        isSpoil: payload.isSpoil,
+      };
+      //const data = await axios.post("http://localhost:3001/comments", payload); //로컬용
+      const data = await axiosInstance.post(
+        `/comments/${payload.gameId}`,
+        commentInfo,
+        config
+      );
       // console.log(data);
       console.log("코멘트 페이로드", payload);
       return thunkAPI.fulfillWithValue(data.data);
@@ -58,17 +63,17 @@ export const deleteComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("딜리트 페이로드", payload);
     try {
-      const data = await axios
-        .delete(`http://localhost:3001/comments/${payload.id}`)
-        .then((response) => {
-          thunkAPI.dispatch(getComments(payload.postId));
-        });
+      // const data = await axios
+      //   .delete(`http://localhost:3001/comments/${payload.id}`)
+      //   .then((response) => {
+      //     thunkAPI.dispatch(getComments(payload.postId));
+      //   });
 
-      // const data = await axiosInstance.post(
-      //   `/detail/comment/${payload.postId}/${payload.commentId}`,
-      //   payload,
-      //   config
-      // );
+      const data = await axiosInstance
+        .delete(`/comments/${payload.id}`, config)
+        .then((response) => {
+          thunkAPI.dispatch(getComments(payload.gameId));
+        });
       console.log("딜리트데이터", data);
       // if (data.request.status === 200) {
       //   console.log("실행?");
@@ -90,18 +95,24 @@ export const updateCommentDetail = createAsyncThunk(
   "todos/update_comments",
   async (payload, thunkAPI) => {
     try {
-      const updateComment = payload.updateComment;
+      const updateCommentPayload = payload.updateComment;
+      console.log(updateCommentPayload);
+      const updateComment = {
+        comment: updateCommentPayload.comment,
+        isSpoil: updateCommentPayload.isSpoil,
+        stars: updateCommentPayload.stars,
+      };
       console.log(updateComment.id);
-      await axios.patch(
-        `http://localhost:3001/comments/${updateComment.id}`,
-        updateComment
-      );
-      console.log(payload);
-      // await axiosInstance.patch(
-      //   `/detail/comment/${updateComment.postId}/${updateComment.commentId}`,
-      //   updateComment,
-      //   config
+      // await axios.patch(
+      //   `http://localhost:3001/comments/${updateComment.id}`,
+      //   updateComment
       // );
+
+      await axiosInstance.patch(
+        `/comments/${updateCommentPayload.id}`,
+        updateComment,
+        config
+      );
       return thunkAPI.fulfillWithValue(updateComment);
     } catch (error) {
       const errorObject = error.response.data;

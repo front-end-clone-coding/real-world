@@ -2,6 +2,7 @@ import React, { useRef, useSelector, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { FaStar } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import {
   deleteComment,
   isDisabledToggle,
@@ -9,12 +10,14 @@ import {
 } from "../../../reduex/modules/commentSlice";
 
 const CommentCards = ({ commentInfo, disabledToggle }) => {
+  const { id } = useParams();
+  const gameId = id;
   const dispatch = useDispatch();
-  const [spoiler, Setspoiler] = useState(commentInfo.spolier);
+  const [spoiler, Setspoiler] = useState(commentInfo.isSpoil);
   // const commentRef = useRef();
   console.log(spoiler);
   // const commentsObject = useRef();
-
+  console.log(commentInfo);
   // //편집모드
   const [commentUpdate, setCommetUpdate] = useState(commentInfo.comment);
   const [editMode, setEditMode] = useState(false);
@@ -24,9 +27,7 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
     const result = window.confirm("이 코멘트를 지울까요?");
     if (result) {
       //console.log(comment);
-      return dispatch(
-        deleteComment({ id: commentInfo.id, postId: commentInfo.postId })
-      );
+      return dispatch(deleteComment({ id: commentInfo.id, gameId: gameId }));
     } else {
       return;
     }
@@ -84,10 +85,10 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
       return alert("입력된 내용이 없습니다.");
     }
     const updateComment = {
-      postId: commentInfo.postId,
       comment: commentUpdate,
+      isSpoil: commentInfo.isSpoil,
       id: commentInfo.id,
-      star: commentInfo.star,
+      stars: commentInfo.stars,
     };
     dispatch(
       updateCommentDetail({
@@ -107,8 +108,8 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
               alt="pic"
             />
             <UserData>
-              <span>user</span>
-              <div>{commentInfo.commentDay}</div>
+              <span>{commentInfo.user}</span>
+              <div>{commentInfo.dates}</div>
             </UserData>
           </Profil>
           {spoiler ? (
@@ -141,7 +142,7 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
                   <div>
                     <Star>
                       <FaStar size="15" color="#fcc419" />
-                      <div>{commentInfo.star}</div>
+                      <div>{commentInfo.stars}</div>
                     </Star>
                     <button
                       onClick={onDeleteHandler}

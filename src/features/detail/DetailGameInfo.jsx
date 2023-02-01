@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { isHiddenToggle } from "../../reduex/modules/commentSlice";
 const DetailGameInfo = () => {
+  const { loginCheck } = useSelector((state) => state.loginSlice);
   const { GameDetailDescriptionTextInfo } = useSelector(
     (state) => state.mainGameInfoSlice
   );
@@ -16,6 +17,14 @@ const DetailGameInfo = () => {
     kit = "없음";
   }
 
+  const onClickHandeler = () => {
+    console.log(loginCheck);
+    if (loginCheck) {
+      dispatch(isHiddenToggle(false));
+    } else {
+      return alert("로그인을 해주세요");
+    }
+  };
   return (
     <GameTitleContainer>
       <div className="wrap">
@@ -91,9 +100,7 @@ const DetailGameInfo = () => {
             <div>{kit}</div>
           </ItemWrap>
         </ProductOptions>
-        <Button onClick={() => dispatch(isHiddenToggle(false))}>
-          댓글 달기
-        </Button>
+        <Button onClick={onClickHandeler}>댓글 달기</Button>
       </div>
     </GameTitleContainer>
   );
