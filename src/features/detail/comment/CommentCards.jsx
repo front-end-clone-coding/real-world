@@ -211,8 +211,6 @@ const Comment = styled.div`
 `;
 const CommentWrap = styled.div`
   button {
-    position: relative;
-    left: 430px;
     background-color: #3b5998;
     color: white;
     width: 60px;
