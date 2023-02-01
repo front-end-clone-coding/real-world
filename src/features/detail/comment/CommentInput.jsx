@@ -43,7 +43,7 @@ const CommentInput = () => {
       SetSpolier(!spolier);
     }
 
-    console.log(spolier);
+    // console.log(spolier);
   };
   //댓글 등록
   const sendComment = (event) => {

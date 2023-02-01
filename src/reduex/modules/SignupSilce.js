@@ -13,16 +13,26 @@ const initialState = {
 export const __signUp = createAsyncThunk(
   "signUp",
   async (payload, thunkAPI) => {
+    const signUp = {
+      userName: payload.userName,
+      email: payload.email,
+      password: payload.password,
+      passwordCheck: payload.passwordCheck,
+    };
     try {
-      const data = await axiosInstance.post(`/user/signup`, payload);
-      console.log("가입 넘기는 데이터", data);
-      console.log("가입 페이로드", payload);
+      const data = await axiosInstance.post(`/user/signup`, signUp);
+      if (data.data.httpStatus === 200) {
+        payload.navigate("/");
+      } else {
+        alert("문제가 생겼습니다.");
+      }
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       //에러
-      console.log(error);
-      alert(`${error.response.data.message}`);
-      return thunkAPI.rejectWithValue(error);
+      console.log(error.response.data.httpStatus);
+      if (error.response.data.httpStatus === 400) {
+        alert(error.response.data.msg);
+      }
     }
   }
 );

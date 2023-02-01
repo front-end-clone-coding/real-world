@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isHiddenToggle } from "../../reduex/modules/commentSlice";
 const DetailGameInfo = () => {
   const { loginCheck } = useSelector((state) => state.loginSlice);
+  const token = window.localStorage.getItem("token");
   const { GameDetailDescriptionTextInfo } = useSelector(
     (state) => state.mainGameInfoSlice
   );
@@ -22,8 +23,8 @@ const DetailGameInfo = () => {
   }
 
   const onClickHandeler = () => {
-    console.log(loginCheck);
-    if (loginCheck) {
+    //console.log(loginCheck);
+    if (token) {
       dispatch(isHiddenToggle(false));
     } else {
       return alert("로그인을 해주세요");

@@ -7,8 +7,8 @@ const GameIntro = () => {
     (state) => state.mainGameInfoSlice
   );
 
-  console.log(GameDetailDescriptionInfo);
-  console.log(Array.isArray(GameDetailDescriptionInfo.gameImg));
+ // console.log(GameDetailDescriptionInfo);
+  //console.log(Array.isArray(GameDetailDescriptionInfo.gameImg));
 
   return (
     <IntroBox>

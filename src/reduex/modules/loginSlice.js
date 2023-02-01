@@ -29,7 +29,7 @@ export const __postLogin = createAsyncThunk(
         alert(`${errorObject.msg}`);
       }
 
-      return thunkAPI.rejectWithValue(error);
+     
     }
   }
 );

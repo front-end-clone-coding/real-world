@@ -2,11 +2,12 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import logo from "../../img/logo.svg";
 import OauthInput from "../../components/OauthInput";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __signUp } from "../../reduex/modules/SignupSilce";
 
 export const SignUpForm = () => {
+  const navigate = useNavigate();
   // 유효성 검사
   const regUserName = /^([a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣\-\_]{2,20})$/; // 2~20자, 한글, 영어, -, _의 사용이 가능합니다. 닉네임 확인 정규식
   const regEmail =
@@ -48,7 +49,7 @@ export const SignUpForm = () => {
       } else setReg({ ...reg, password: true });
     }
     if (name === "passwordCheck") {
-      console.log("너 뉘기야", passwordValue.current.value);
+      //console.log("너 뉘기야", passwordValue.current.value);
       if (passwordValue.current.value === value) {
         setReg({ ...reg, passwordCheck: true });
       } else setReg({ ...reg, passwordCheck: false });
@@ -105,6 +106,7 @@ export const SignUpForm = () => {
         email: email.value,
         password: password.value,
         passwordCheck: passwordCheck.value,
+        navigate,
       })
     );
   };

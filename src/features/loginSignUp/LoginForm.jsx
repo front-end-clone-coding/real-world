@@ -28,7 +28,7 @@ const LoginForm = () => {
   //유효성 이벤트 핸들러
   const onChangeRegHandler = (event) => {
     const { name, value } = event.target;
-    console.log(emailValue.current.value);
+    //console.log(emailValue.current.value);
     if (name === "email") {
       if (!regEmail.test(value)) {
         SetReg({ ...reg, email: false });
@@ -43,7 +43,7 @@ const LoginForm = () => {
   //회원가입버튼을 눌렀을시 이벤트핸들러
   const onSubmitLoginHandler = (event) => {
     event.preventDefault();
-    console.log(emailValue);
+    //console.log(emailValue);
     const email = emailValue.current;
     const password = passwordValue.current;
 

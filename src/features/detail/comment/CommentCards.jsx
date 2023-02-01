@@ -15,9 +15,9 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
   const dispatch = useDispatch();
   const [spoiler, Setspoiler] = useState(commentInfo.isSpoil);
   // const commentRef = useRef();
-  console.log(spoiler);
+  //console.log(spoiler);
   // const commentsObject = useRef();
-  console.log(commentInfo);
+  //console.log(commentInfo);
   // //편집모드
   const [commentUpdate, setCommetUpdate] = useState(commentInfo.comment);
   const [editMode, setEditMode] = useState(false);
@@ -32,43 +32,8 @@ const CommentCards = ({ commentInfo, disabledToggle }) => {
       return;
     }
   };
-  console.log();
-  //수정기능
-  //수정버튼 눌렀을시
-  // const onChangeEditMode = () => {
-  //   // //토큰이 없을 경우 실행 못하도록
-  //   // if (!token) return alert("로그인을 해주세요");
-  //   //편집모드
-  //   setEditMode(true);
-  //   //수정을 했을 시 다른 버튼들 비활성화
-  //   dispatch(isDisabledToggle(true));
-  // };
-  // //수정시 빈칸입력
-  // const onChangeHandler = (event) => {
-  //   setCommetUpdate(event.target.value);
-  //   // console.log("코멘트 입력 값", comment);
-  // };
-
-  //   //수정버튼 클릭시
-  //   const onEditButtonHandler = () => {
-  //     //빈칸 유효성
-  //     if (commentUpdate.trim() === "") {
-  //       return alert("입력된 내용이 없습니다.");
-  //     }
-  //     //console.log(comment.id);
-  //     const updateComment = {
-  //       postId: postId,
-  //       comment: commentUpdate,
-  //       commentId: comment.commentId,
-  //     };
-  //     dispatch(
-  //       updateCommentDetail({
-  //         updateComment,
-  //       })
-  //     );
-  //     setEditMode(false);
-  //     dispatch(isDisabledToggle(false));
-  //   };
+ 
+  
   const onHendlerSopiler = () => {
     Setspoiler(false);
   };

@@ -57,8 +57,8 @@ export const getMainGameInfo = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get("/games/star");
-      console.log("슬라이더?", data);
-      console.log(data);
+      //console.log("슬라이더?", data);
+      //console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       const errorObject = error.response.data;

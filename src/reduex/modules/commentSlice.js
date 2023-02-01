@@ -17,13 +17,13 @@ const config = {
 export const getComments = createAsyncThunk(
   "getComments",
   async (payload, thunkAPI) => {
-    console.log("겟 페이로드", payload);
+    //console.log("겟 페이로드", payload);
     try {
       // const data = await axios.get(
       //   `http://localhost:3001/comments?gameId=${payload}`
       // ); //로컬용*/
       const data = await axiosInstance.get(`/comments/${payload}`);
-      console.log(data.data);
+      //console.log(data.data);
 
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -61,7 +61,7 @@ export const addComment = createAsyncThunk(
 export const deleteComment = createAsyncThunk(
   "deleteComment",
   async (payload, thunkAPI) => {
-    console.log("딜리트 페이로드", payload);
+    //console.log("딜리트 페이로드", payload);
     try {
       // const data = await axios
       //   .delete(`http://localhost:3001/comments/${payload.id}`)
@@ -74,7 +74,7 @@ export const deleteComment = createAsyncThunk(
         .then((response) => {
           thunkAPI.dispatch(getComments(payload.gameId));
         });
-      console.log("딜리트데이터", data);
+     // console.log("딜리트데이터", data);
       // if (data.request.status === 200) {
       //   console.log("실행?");
       //   thunkAPI.dispatch(getComments());
@@ -96,13 +96,13 @@ export const updateCommentDetail = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const updateCommentPayload = payload.updateComment;
-      console.log(updateCommentPayload);
+      //console.log(updateCommentPayload);
       const updateComment = {
         comment: updateCommentPayload.comment,
         isSpoil: updateCommentPayload.isSpoil,
         stars: updateCommentPayload.stars,
       };
-      console.log(updateComment.id);
+      //console.log(updateComment.id);
       // await axios.patch(
       //   `http://localhost:3001/comments/${updateComment.id}`,
       //   updateComment
@@ -207,8 +207,8 @@ export const commentsSlice = createSlice({
     },
     [updateCommentDetail.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log(action.payload);
-      console.log(state.comments);
+      //console.log(action.payload);
+      //console.log(state.comments);
       state.comments = [...state.comments].map((comment) => {
         if (comment.id === action.payload.id) {
           const newComment = comment;
