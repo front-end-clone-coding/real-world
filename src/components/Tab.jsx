@@ -4,11 +4,13 @@ import BestGameList from "../features/main/BestGameList";
 import FreeGameList from "../features/main/FreeGameList";
 import GameIntro from "../features/detail/GameIntro";
 import GameComment from "../features/detail/comment/GameComment";
+
 const Tab = ({ Categorylist, visible }) => {
   let components;
   if (Categorylist[0] === "추천") {
     components = <BestGameList />;
-  } //else if (Categorylist[0] === "게임소개") {
+  }
+  // else if (Categorylist[0] === "게임소개") {
   //   components = <GameIntro />;
   // }
 
